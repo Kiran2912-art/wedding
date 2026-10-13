@@ -37,7 +37,10 @@ body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16p
 @keyframes sway{from{transform:rotate(-1.2deg)}to{transform:rotate(1.2deg)}}
 .body{padding:0 22px 26px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:18px}
 .script{font:400 30px/1.1 var(--script);color:var(--peacock)}
-.shri{font:600 13px/1 var(--body);letter-spacing:.3em;color:var(--saffron)}
+.shri{font:600 15px/1 var(--body);letter-spacing:.3em;color:var(--saffron)}
+.shloka{display:flex;flex-direction:column;gap:2px;max-width:24em}
+.shloka i{font:500 19px/1.35 var(--display);color:var(--rose)}
+.shloka>span{font-size:13px;color:var(--soft)}
 .scene{width:min(100%,320px);height:auto;margin-top:-6px}
 h1{margin:0;font:700 clamp(46px,14vw,62px)/.95 var(--display);color:var(--rose);text-wrap:balance}
 h1 .amp{display:block;font:400 .62em/1.1 var(--script);color:var(--marigold)}
@@ -109,11 +112,12 @@ address{font-style:normal;font-size:14px;color:var(--soft);max-width:26em}
   </svg>
 
   <div class="body">
-    <span class="shri">|| SHRI ||</span>
+    <span class="shri">॥ SHRI ॥</span>
+    <p class="shloka" style="margin:0"><i>Jagataḥ pitarau vande<br>Pārvatī-Parameśvarau</i><span>We bow to Parvati and Parameshwara, the parents of the universe</span></p>
     <span class="script">Together with our families</span>
 
     <!-- mandap with the couple -->
-    <svg class="scene" viewBox="0 0 300 270" role="img" aria-label="Illustration of a bride and groom holding hands under a floral mandap">
+    <svg class="scene" viewBox="0 0 300 270" role="img" aria-label="Illustration of a bride and groom greeting guests with a namaste under a floral mandap">
       <!-- glow -->
       <circle cx="150" cy="150" r="118" fill="#FFF1D6"/>
       <!-- banana leaves -->
@@ -194,7 +198,7 @@ address{font-style:normal;font-size:14px;color:var(--soft);max-width:26em}
     </svg>
 
     <h1>Kiran<span class="amp">&amp;</span>Gagana</h1>
-    <span class="sub">request your presence at our wedding</span>
+    <span class="sub">request the pleasure of your company at our wedding</span>
 
     <svg class="leafrule" viewBox="0 0 180 20" aria-hidden="true">
       <line x1="0" y1="10" x2="66" y2="10" stroke="#C99A12" stroke-width="1.5"/>
@@ -211,10 +215,10 @@ address{font-style:normal;font-size:14px;color:var(--soft);max-width:26em}
           Muhurtham
         </div>
         <div class="inner">
-          <div class="when"><span class="day">06</span><span class="mon"><b>December</b><span>Sunday · 2026</span></span></div>
+          <div class="when"><span class="day">06</span><span class="mon"><b>December 2026</b><span>Sunday</span></span></div>
           <span class="time">12:16 PM</span>
           <span class="venue">Sannidhi Kalakshetra</span>
-          <address>JSS Campus, Vidyagiri, Dharwad 580004</address>
+          <address>JSS Campus, Vidyagiri, <span style="white-space:nowrap">Dharwad – 580004</span></address>
           <a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=Sannidhi%20Kalakshetra%2C%20JSS%20Campus%2C%20Vidyagiri%2C%20Dharwad%2C%20Karnataka%20580004">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
             Get directions</a>
@@ -227,10 +231,10 @@ address{font-style:normal;font-size:14px;color:var(--soft);max-width:26em}
           Reception
         </div>
         <div class="inner">
-          <div class="when"><span class="day">13</span><span class="mon"><b>December</b><span>Sunday · 2026</span></span></div>
+          <div class="when"><span class="day">13</span><span class="mon"><b>December 2026</b><span>Sunday</span></span></div>
           <span class="time">10:30 AM onwards</span>
           <span class="venue">Abhimani Convention Hall</span>
-          <address>97, 2nd Floor, WOC, 3rd Stage, Block 2, Basaveshwar Nagar, Bengaluru 560079</address>
+          <address>No. 97, 2nd Floor, WOC Road, 3rd Stage, Block 2, Basaveshwara Nagar, <span style="white-space:nowrap">Bengaluru – 560079</span></address>
           <a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=Abhimani%20Convention%20Hall%2C%20Basaveshwar%20Nagar%2C%20Bengaluru%20560079">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
             Get directions</a>
@@ -238,7 +242,7 @@ address{font-style:normal;font-size:14px;color:var(--soft);max-width:26em}
       </article>
     </div>
 
-    <span class="bless">Your blessings are our greatest gift</span>
+    <span class="bless">Your presence and blessings are our greatest gift</span>
 
     <!-- diyas -->
     <svg class="diyas" viewBox="0 0 300 60" aria-hidden="true">
