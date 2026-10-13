@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Kiran & Gagana wedding invitation, 6 December 2026, Dharwad">
+<meta property="og:title" content="Kiran & Gagana – Wedding Invitation">
+<meta property="og:description" content="Muhurtham 6 Dec 2026, Dharwad · Reception 13 Dec 2026, Bengaluru">
+<title>Kiran &amp; Gagana</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Great+Vibes&family=Jost:wght@400;500;600&display=swap">
+<style>
+/* Layout: one phone-width card. Marigold toran on top, illustrated mandap with the couple, names, two colour-coded event cards with map links, a row of diyas to close. Deliberate single light theme, like a printed card. */
+:root{
+  --bg:#FFF7EE;
+  --card:#FFFFFF;
+  --ink:#23395B;
+  --soft:#6A7488;
+  --rose:#B5174F;
+  --marigold:#F29F05;
+  --saffron:#E8590C;
+  --peacock:#0E7C86;
+  --leaf:#3E8E41;
+  --gold:#C99A12;
+  --display:"Cormorant Garamond", Georgia, serif;
+  --script:"Great Vibes", "Cormorant Garamond", cursive;
+  --body:"Jost", "Segoe UI", system-ui, sans-serif;
+  color-scheme: light;
+}
+*{box-sizing:border-box}
+html{background:var(--bg)}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;padding-inline:16px;padding-block:20px 32px}
+.card{position:relative;max-width:460px;margin:0 auto;background:var(--card);border:3px solid var(--rose);outline:2px solid var(--marigold);outline-offset:4px;overflow:hidden}
+.toran{display:block;width:100%;height:auto}
+.toran .sway{transform-origin:50% 0;animation:sway 5s ease-in-out infinite alternate}
+@keyframes sway{from{transform:rotate(-1.2deg)}to{transform:rotate(1.2deg)}}
+.body{padding:0 22px 26px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:18px}
+.script{font:400 30px/1.1 var(--script);color:var(--peacock)}
+.shri{font:600 13px/1 var(--body);letter-spacing:.3em;color:var(--saffron)}
+.scene{width:min(100%,320px);height:auto;margin-top:-6px}
+h1{margin:0;font:700 clamp(46px,14vw,62px)/.95 var(--display);color:var(--rose);text-wrap:balance}
+h1 .amp{display:block;font:400 .62em/1.1 var(--script);color:var(--marigold)}
+.sub{font:500 12px/1.5 var(--body);letter-spacing:.26em;text-transform:uppercase;color:var(--soft)}
+.leafrule{width:180px;height:20px}
+
+.events{display:grid;grid-template-columns:1fr;gap:16px;width:100%}
+.event{--c:var(--saffron);border-radius:18px;overflow:hidden;border:1.5px solid var(--c);background:#fff;display:flex;flex-direction:column}
+.event.rec{--c:var(--peacock)}
+.event .band{background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;gap:10px;padding:10px 12px;font:600 13px/1 var(--body);letter-spacing:.26em;text-transform:uppercase}
+.event .band svg{width:26px;height:26px;flex:none}
+.event .inner{padding:16px 16px 18px;display:flex;flex-direction:column;align-items:center;gap:4px}
+.when{display:flex;align-items:center;gap:14px}
+.day{font:700 54px/1 var(--display);color:var(--c);font-variant-numeric:lining-nums}
+.mon{text-align:left;display:flex;flex-direction:column;line-height:1.15}
+.mon b{font:600 17px/1.15 var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--ink)}
+.mon span{font-size:14px;color:var(--soft)}
+.time{font:600 16px/1.4 var(--body);color:var(--ink)}
+.venue{margin-top:6px;font:700 23px/1.2 var(--display);color:var(--rose)}
+address{font-style:normal;font-size:14px;color:var(--soft);max-width:26em}
+.map{margin-top:10px;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:10px 22px;border-radius:999px;background:var(--c);color:#fff;text-decoration:none;font:500 14px/1 var(--body);box-shadow:0 3px 0 rgba(35,57,91,.18)}
+.map svg{width:17px;height:17px}
+.map:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+
+.diyas{display:block;width:100%;height:auto;margin-top:4px}
+.flame{transform-box:fill-box;transform-origin:50% 100%;animation:flick 1.6s ease-in-out infinite alternate}
+.flame.b{animation-delay:.5s}.flame.c{animation-delay:.9s}
+@keyframes flick{0%{transform:scale(1,1)}50%{transform:scale(.9,1.08)}100%{transform:scale(1.05,.95)}}
+.bless{font:400 26px/1.2 var(--script);color:var(--rose)}
+/* the couple greet guests with a gentle namaste bow, in turn */
+.groom,.bride,.heart{transform-box:view-box}
+/* cycle: apart, walk together, heart rises, namaste bow, heart fades, walk apart */
+.groom{transform-origin:114px 252px;animation:groomMove 7s ease-in-out infinite}
+.bride{transform-origin:186px 252px;animation:brideMove 7s ease-in-out infinite}
+.heart{transform-origin:150px 82px;animation:heartRise 7s ease-in-out infinite}
+@keyframes groomMove{
+  0%,8%{transform:translateX(-14px)}
+  28%{transform:translateX(3px)}
+  42%{transform:translateX(3px) rotate(5deg)}
+  56%,70%{transform:translateX(3px) rotate(0)}
+  92%,100%{transform:translateX(-14px)}
+}
+@keyframes brideMove{
+  0%,8%{transform:translateX(14px)}
+  28%{transform:translateX(-3px)}
+  44%{transform:translateX(-3px) rotate(-5deg)}
+  58%,70%{transform:translateX(-3px) rotate(0)}
+  92%,100%{transform:translateX(14px)}
+}
+@keyframes heartRise{
+  0%,26%{opacity:0;transform:translateY(22px) scale(.3)}
+  36%{opacity:1;transform:translateY(-2px) scale(1.2)}
+  42%{transform:translateY(0) scale(1)}
+  50%{transform:translateY(-3px) scale(1.12)}
+  58%,70%{opacity:1;transform:translateY(-6px) scale(1)}
+  80%,100%{opacity:0;transform:translateY(-14px) scale(.5)}
+}
+@media (prefers-reduced-motion:reduce){.toran .sway,.flame,.groom,.bride,.heart{animation:none}}
+</style>
+</head>
+<body style="margin:0">
+
+
+<main class="card">
+
+  <!-- marigold and mango-leaf toran -->
+  <svg class="toran" viewBox="0 0 460 110" aria-hidden="true">
+    <g class="sway" id="toran"></g>
+  </svg>
+
+  <div class="body">
+    <span class="shri">|| SHRI ||</span>
+    <span class="script">Together with our families</span>
+
+    <!-- mandap with the couple -->
+    <svg class="scene" viewBox="0 0 300 270" role="img" aria-label="Illustration of a bride and groom holding hands under a floral mandap">
+      <!-- glow -->
+      <circle cx="150" cy="150" r="118" fill="#FFF1D6"/>
+      <!-- banana leaves -->
+      <g fill="#3E8E41">
+        <path d="M30 262 C10 200 18 130 44 96 C44 150 46 210 52 262 Z"/>
+        <path d="M270 262 C290 200 282 130 256 96 C256 150 254 210 248 262 Z"/>
+      </g>
+      <g fill="#5DB35F">
+        <path d="M44 262 C30 214 34 166 54 132 C52 178 56 224 62 262 Z"/>
+        <path d="M256 262 C270 214 266 166 246 132 C248 178 244 224 238 262 Z"/>
+      </g>
+      <!-- mandap arch -->
+      <path d="M58 262 V118 Q58 40 150 32 Q242 40 242 118 V262" fill="none" stroke="#B5174F" stroke-width="7" stroke-linecap="round"/>
+      <path d="M70 262 V120 Q70 54 150 46 Q230 54 230 120 V262" fill="none" stroke="#F29F05" stroke-width="3"/>
+      <!-- flower strings from the arch -->
+      <g id="strings"></g>
+      <!-- kalash on top -->
+      <g transform="translate(150 22)">
+        <path d="M-12 6 Q-14 -6 0 -8 Q14 -6 12 6 Z" fill="#C99A12"/>
+        <circle cx="0" cy="-12" r="6" fill="#8B5A2B"/>
+        <path d="M-10 -10 Q-18 -16 -20 -8 M10 -10 Q18 -16 20 -8" stroke="#3E8E41" stroke-width="3" fill="none" stroke-linecap="round"/>
+      </g>
+      <!-- floor -->
+      <path d="M40 254 H260" stroke="#E8590C" stroke-width="3" stroke-dasharray="2 7" stroke-linecap="round"/>
+
+      <!-- groom -->
+      <g class="groom">
+        <rect x="100" y="214" width="12" height="36" rx="4" fill="#F3E3C0"/>
+        <rect x="116" y="214" width="12" height="36" rx="4" fill="#F3E3C0"/>
+        <ellipse cx="105" cy="251" rx="9" ry="4" fill="#B5174F"/>
+        <ellipse cx="123" cy="251" rx="9" ry="4" fill="#B5174F"/>
+        <path d="M92 138 Q114 128 136 138 L144 222 L84 222 Z" fill="#FBF0D9" stroke="#C99A12" stroke-width="2"/>
+        <g fill="#C99A12"><circle cx="114" cy="152" r="2"/><circle cx="114" cy="166" r="2"/><circle cx="114" cy="180" r="2"/><circle cx="114" cy="194" r="2"/></g>
+        <path d="M96 140 L138 206 L130 211 L90 147 Z" fill="#B5174F"/>
+        <rect x="108" y="124" width="12" height="12" fill="#C98A5E"/>
+        <circle cx="114" cy="112" r="17" fill="#C98A5E"/>
+        <path d="M95 110 Q96 86 114 84 Q134 84 134 108 Q118 101 95 110 Z" fill="#F29F05"/>
+        <path d="M97 104 Q114 94 132 102" stroke="#E8590C" stroke-width="3" fill="none"/>
+        <path d="M128 88 Q138 74 134 66 Q128 76 124 86 Z" fill="#E8590C"/>
+        <circle cx="114" cy="95" r="3.5" fill="#B5174F"/>
+        <path d="M98 134 Q114 156 132 134" stroke="#F29F05" stroke-width="6" fill="none" stroke-dasharray="1 6" stroke-linecap="round"/>
+        <!-- namaste: arms folded to the chest -->
+        <g class="hands-g">
+          <path d="M97 142 Q93 166 111 168" stroke="#C99A12" stroke-width="12" fill="none" stroke-linecap="round"/>
+          <path d="M131 142 Q135 166 117 168" stroke="#C99A12" stroke-width="12" fill="none" stroke-linecap="round"/>
+          <path d="M97 142 Q93 166 111 168" stroke="#FBF0D9" stroke-width="8" fill="none" stroke-linecap="round"/>
+          <path d="M131 142 Q135 166 117 168" stroke="#FBF0D9" stroke-width="8" fill="none" stroke-linecap="round"/>
+          <path d="M114 146 C108 153 109 163 114 170 C119 163 120 153 114 146 Z" fill="#C98A5E" stroke="#A86E46" stroke-width="1"/>
+          <line x1="114" y1="149" x2="114" y2="168" stroke="#A86E46" stroke-width="1"/>
+        </g>
+      </g>
+
+      <!-- bride -->
+      <g class="bride">
+        <path d="M166 138 Q186 130 206 138 L220 252 L152 252 Z" fill="#C2185B"/>
+        <path d="M157 236 L215 236 L218 252 L154 252 Z" fill="#F2C14E"/>
+        <path d="M168 140 Q200 164 214 212 L205 216 Q192 172 163 148 Z" fill="#F2C14E"/>
+        <rect x="180" y="124" width="11" height="12" fill="#C98A5E"/>
+        <circle cx="186" cy="112" r="16" fill="#C98A5E"/>
+        <path d="M169 112 Q168 92 186 92 Q204 92 203 112 Q198 100 186 100 Q174 100 169 112 Z" fill="#2B1B17"/>
+        <circle cx="203" cy="108" r="9" fill="#2B1B17"/>
+        <g fill="#FFFFFF"><circle cx="208" cy="101" r="2.4"/><circle cx="211" cy="106" r="2.4"/><circle cx="211" cy="112" r="2.4"/><circle cx="208" cy="117" r="2.4"/></g>
+        <circle cx="186" cy="104" r="1.8" fill="#B5174F"/>
+        <path d="M172 134 Q186 156 202 134" stroke="#F29F05" stroke-width="6" fill="none" stroke-dasharray="1 6" stroke-linecap="round"/>
+        <!-- namaste: arms folded to the chest -->
+        <g>
+          <path d="M170 141 Q166 165 183 168" stroke="#C98A5E" stroke-width="7" fill="none" stroke-linecap="round"/>
+          <path d="M202 141 Q206 165 189 168" stroke="#C98A5E" stroke-width="7" fill="none" stroke-linecap="round"/>
+          <path d="M168 140 L172 150" stroke="#C2185B" stroke-width="9" stroke-linecap="round"/>
+          <path d="M204 140 L200 150" stroke="#C2185B" stroke-width="9" stroke-linecap="round"/>
+          <g stroke="#F29F05" stroke-width="2.5"><line x1="176" y1="164" x2="180" y2="167"/><line x1="196" y1="164" x2="192" y2="167"/></g>
+          <path d="M186 146 C180 153 181 163 186 170 C191 163 192 153 186 146 Z" fill="#C98A5E" stroke="#A86E46" stroke-width="1"/>
+          <line x1="186" y1="149" x2="186" y2="168" stroke="#A86E46" stroke-width="1"/>
+        </g>
+      </g>
+      <!-- heart -->
+      <path class="heart" d="M150 72 C142 62 128 70 136 80 L150 92 L164 80 C172 70 158 62 150 72 Z" fill="#B5174F"/>
+    </svg>
+
+    <h1>Kiran<span class="amp">&amp;</span>Gagana</h1>
+    <span class="sub">request your presence at our wedding</span>
+
+    <svg class="leafrule" viewBox="0 0 180 20" aria-hidden="true">
+      <line x1="0" y1="10" x2="66" y2="10" stroke="#C99A12" stroke-width="1.5"/>
+      <line x1="114" y1="10" x2="180" y2="10" stroke="#C99A12" stroke-width="1.5"/>
+      <path d="M90 2 C98 6 98 14 90 18 C82 14 82 6 90 2 Z" fill="#B5174F"/>
+      <path d="M76 10 C80 4 86 6 88 10 C86 14 80 16 76 10 Z" fill="#3E8E41"/>
+      <path d="M104 10 C100 4 94 6 92 10 C94 14 100 16 104 10 Z" fill="#3E8E41"/>
+    </svg>
+
+    <div class="events">
+      <article class="event">
+        <div class="band">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M8 18 Q6 28 16 29 Q26 28 24 18 Z" fill="#fff"/><rect x="11" y="14" width="10" height="5" rx="1.5" fill="#fff"/><circle cx="16" cy="10" r="4" fill="#fff"/><path d="M12 12 Q6 8 4 13 M20 12 Q26 8 28 13" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+          Muhurtham
+        </div>
+        <div class="inner">
+          <div class="when"><span class="day">06</span><span class="mon"><b>December</b><span>Sunday · 2026</span></span></div>
+          <span class="time">12:16 PM</span>
+          <span class="venue">Sannidhi Kalakshetra</span>
+          <address>JSS Campus, Vidyagiri, Dharwad 580004</address>
+          <a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=Sannidhi%20Kalakshetra%2C%20JSS%20Campus%2C%20Vidyagiri%2C%20Dharwad%2C%20Karnataka%20580004">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+            Get directions</a>
+        </div>
+      </article>
+
+      <article class="event rec">
+        <div class="band">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="10" fill="none" stroke="#fff" stroke-width="2" stroke-dasharray="0.5 4.5" stroke-linecap="round" style="stroke-width:5"/><path d="M16 22 C10 17 11 12 14 12 C15 12 16 13 16 14 C16 13 17 12 18 12 C21 12 22 17 16 22 Z" fill="#fff"/></svg>
+          Reception
+        </div>
+        <div class="inner">
+          <div class="when"><span class="day">13</span><span class="mon"><b>December</b><span>Sunday · 2026</span></span></div>
+          <span class="time">10:30 AM onwards</span>
+          <span class="venue">Abhimani Convention Hall</span>
+          <address>97, 2nd Floor, WOC, 3rd Stage, Block 2, Basaveshwar Nagar, Bengaluru 560079</address>
+          <a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=Abhimani%20Convention%20Hall%2C%20Basaveshwar%20Nagar%2C%20Bengaluru%20560079">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+            Get directions</a>
+        </div>
+      </article>
+    </div>
+
+    <span class="bless">Your blessings are our greatest gift</span>
+
+    <!-- diyas -->
+    <svg class="diyas" viewBox="0 0 300 60" aria-hidden="true">
+      <g transform="translate(60 0)">
+        <path class="flame" d="M0 30 C-6 22 -2 14 0 8 C2 14 6 22 0 30 Z" fill="#F29F05"/>
+        <path d="M-22 32 Q0 58 22 32 Z" fill="#B5174F"/><path d="M-22 32 H22" stroke="#C99A12" stroke-width="3" stroke-linecap="round"/>
+      </g>
+      <g transform="translate(150 0)">
+        <path class="flame b" d="M0 30 C-7 21 -2 12 0 4 C2 12 7 21 0 30 Z" fill="#E8590C"/>
+        <path d="M-26 32 Q0 62 26 32 Z" fill="#0E7C86"/><path d="M-26 32 H26" stroke="#C99A12" stroke-width="3" stroke-linecap="round"/>
+      </g>
+      <g transform="translate(240 0)">
+        <path class="flame c" d="M0 30 C-6 22 -2 14 0 8 C2 14 6 22 0 30 Z" fill="#F29F05"/>
+        <path d="M-22 32 Q0 58 22 32 Z" fill="#B5174F"/><path d="M-22 32 H22" stroke="#C99A12" stroke-width="3" stroke-linecap="round"/>
+      </g>
+    </svg>
+  </div>
+</main>
+
+<script>
+(function(){
+  var ns='http://www.w3.org/2000/svg';
+  function el(n,a,p){var e=document.createElementNS(ns,n);for(var k in a)e.setAttribute(k,a[k]);p.appendChild(e);return e;}
+  // toran: rope, alternating marigold strands and mango leaves
+  var t=document.getElementById('toran');
+  el('path',{d:'M-10 12 Q230 34 470 12',fill:'none',stroke:'#C99A12','stroke-width':3},t);
+  var n=11;
+  for(var i=0;i<n;i++){
+    var x=20+i*(420/(n-1)), y=12+22*(1-Math.pow((x-230)/240,2))*0.9;
+    if(i%2===0){
+      var len=4+(i%4===0?1:0);
+      el('line',{x1:x,y1:y,x2:x,y2:y+len*13,stroke:'#C99A12','stroke-width':1.2},t);
+      for(var k=0;k<len;k++){
+        var cy=y+8+k*13, col=k%2?'#E8590C':'#F29F05';
+        el('circle',{cx:x,cy:cy,r:6.5,fill:col},t);
+        el('circle',{cx:x,cy:cy,r:3,fill:'#FBC02D'},t);
+      }
+    } else {
+      var g=el('g',{transform:'translate('+x+' '+(y+2)+')'},t);
+      el('path',{d:'M0 0 C9 10 8 26 0 34 C-8 26 -9 10 0 0 Z',fill:'#3E8E41'},g);
+      el('path',{d:'M0 2 V32',stroke:'#2E6B31','stroke-width':1},g);
+    }
+  }
+  // flower strings hanging inside the mandap arch
+  var s=document.getElementById('strings');
+  [[92,62,5],[120,50,6],[180,50,6],[208,62,5]].forEach(function(p){
+    for(var k=0;k<p[2];k++){
+      el('circle',{cx:p[0],cy:p[1]+k*9,r:3.6,fill:k%2?'#FFFFFF':'#F29F05',stroke:k%2?'#E0C9A0':'none','stroke-width':0.8},s);
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
