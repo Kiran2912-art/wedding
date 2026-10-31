@@ -118,6 +118,25 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offse
 .hero img.fill{object-fit:cover;filter:blur(22px) brightness(.45);transform:scale(1.15)}
 .hero::after{content:"";position:absolute;inset:auto 0 0;height:8%;background:linear-gradient(180deg,transparent,var(--night))}
 .hero .ph{width:min(70%,320px);aspect-ratio:4/5;border:2px dashed rgba(244,236,220,.5);border-radius:8px;display:grid;place-items:center;font:700 13px var(--body);letter-spacing:.2em;color:var(--ivory)}
+
+/* photo backdrop behind the map */
+.photos{position:absolute;inset:0;z-index:0;overflow:hidden}
+.photos img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1s ease;transform:scale(1.04)}
+.photos img.on{opacity:1}
+.wash{position:absolute;inset:0;z-index:0;background:linear-gradient(180deg,rgba(13,29,41,.6) 0%,rgba(13,29,41,.28) 30%,rgba(13,29,41,.32) 70%,var(--night) 100%)}
+#map{z-index:1}
+.stars{display:none}
+.state{fill:rgba(18,44,60,.22)!important;stroke:rgba(244,236,220,.75)!important;stroke-width:1.2!important;filter:none!important}
+.nb{fill:rgba(13,29,41,.22)!important;stroke:rgba(244,236,220,.2)!important}
+.grat{display:none}
+.region{display:none}
+.sea{fill:rgba(244,236,220,.55)!important}
+.town text,.who{paint-order:stroke;stroke:rgba(13,29,41,.85);stroke-width:4px;stroke-linejoin:round}
+.town text{opacity:1!important}
+.town:not(.passed):not(.start):not(.end) text{fill:rgba(244,236,220,.7)}
+.road{stroke:rgba(244,236,220,.55)!important}
+.panel{background:var(--night)!important;border-top:0!important}
+.big{text-shadow:0 2px 12px rgba(0,0,0,.4)}
 [hidden]{display:none!important}
 @media (prefers-reduced-motion:reduce){.him-ring,.ring.pulse .dot,.hint,.line.swap,.final{animation:none}}
 </style>
@@ -128,7 +147,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offse
 <div id="app">
   <canvas class="stars" id="stars" aria-hidden="true"></canvas>
   <div class="top"><span class="tag">06 · 12 · 2026</span><button class="mute" id="mute" aria-label="Mute sound">🔊</button></div>
-  <div class="mapwrap"><svg id="map" aria-hidden="true"></svg><div class="hero" id="hero" hidden></div></div>
+  <div class="mapwrap"><div class="photos" id="photos"></div><div class="wash"></div><svg id="map" aria-hidden="true"></svg><div class="hero" id="hero" hidden></div></div>
 
   <div class="panel" id="panel">
     <div id="hintSlot"></div>
@@ -162,6 +181,9 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offse
 <script>
 (function(){
   const PHOTOS=["c1.jpg","c2.jpg","c3.jpg","c4.jpg","c5.jpg","c6.jpg"];
+  // background photo for each stop (Bangalore..Hubballi)
+  const BGS=["bg1.jpg", "bg2.jpg", "bg3.jpg", "bg4.jpg", "bg5.jpg", "bg6.jpg"];
+  const BGPOS=["52% 25%", "55% 38%", "62% 35%", "42% 40%", "50% 28%", "47% 33%"];
   const HERO="hero.jpg";
   const $=id=>document.getElementById(id);
   const NS="http://www.w3.org/2000/svg";
@@ -240,7 +262,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offse
   const REST=[[300,660],[420,450],[95,620],[350,330],[75,480],[245,190]];
   const BIG=1.45, SM=0.6;
   const defs=el("defs",{}); const cp=el("clipPath",{id:"cloudclip"},defs); el("path",{d:CLOUD,transform:"scale(.9)"},cp);
-  const pols=REST.slice(0,PHOTOS.length).map(([x,y],i)=>{
+  const pols=REST.slice(0,0).map(([x,y],i)=>{
     const th=el("line",{class:"thread"});
     const g=el("g",{class:"pol"});
     const inner=el("g",{class:"inner"},g);
@@ -273,6 +295,10 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offse
     if(front && carG.previousSibling!==front.g){ svg.appendChild(front.g); svg.appendChild(carG); }
   }
 
+  const bgEls=BGS.map((src,i)=>{const im=document.createElement("img");im.alt="";im.decoding="async";if(i<2)im.src=src;else im.dataset.src=src;im.style.objectPosition=BGPOS[i];$("photos").appendChild(im);return im;});
+  let bgOn=-1;
+  function showBg(i){ if(i===bgOn) return; bgOn=i; bgEls.forEach((im,j)=>{ if(j<=i+1&&im.dataset.src){im.src=im.dataset.src;delete im.dataset.src;} im.classList.toggle("on",j===i); }); }
+  showBg(0);
   $("hero").innerHTML=`<img class="fill" src="${HERO}" alt=""><img src="${HERO}" alt="Kiran and Gagana">`;
   // ---- stars ----
   (function(){const c=$("stars"),x=c.getContext("2d");function draw(){c.width=innerWidth;c.height=innerHeight;x.clearRect(0,0,c.width,c.height);
@@ -392,12 +418,12 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offse
     const ang=Math.atan2(q2.y-q0.y,q2.x-q0.x)*180/Math.PI;
     carG.setAttribute("transform",`translate(${q.x} ${q.y}) rotate(${ang})`);
     hl.setAttribute("x",q.x+16);hl.setAttribute("y",q.y-16);
-    hl.style.opacity=S.p>0.97?0:1;
+    hl.style.opacity=S.p>0.02?0:1;
     route.style.strokeDashoffset=L*(1-S.p);
     ringFg.style.strokeDashoffset=RC*(1-S.p);
     let k=0; for(let i=0;i<frac.length;i++) if(S.p>=frac[i]-0.002) k=i;
     townEls.forEach((g,i)=>g.classList.toggle("passed",i<=k));
-    placePhotos();
+    placePhotos(); showBg(Math.min(k,BGS.length-1));
     if(k>reached){reached=k;bell(660+k*60,0,.05);buzz(25);}
     if(k<reached) reached=k;
     showLine(Math.min(k,LINES.length-1));
