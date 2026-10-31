@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Ajeet weds Arpita · Monday, 14 December 2026 · Muhurtham 12:36 PM · Rayara Matha, Navanagar, Hubballi-Dharwad">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ajeet weds Arpita · 14 Dec 2026">
+<meta property="og:description" content="You have a wedding invitation. Tap to board the Wedding Express.">
+<meta name="theme-color" content="#9cc4d8">
+<style>*{box-sizing:border-box}[hidden]{display:none!important}body{margin:0;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>
+<title>Ajeet &amp; Arpita Express</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rozha+One&family=Mukta:wght@400;600;800&family=Saira+Stencil+One&display=swap">
+<style>
+/* Layout: one-screen scene — sky header, a train passing a hidden station board, platform with the lever at the bottom */
+:root{
+  --sky-top:#9cc4d8; --sky-low:#f6d7b3; --hill-far:#86a58a; --hill-near:#5d7f62;
+  --ballast:#7a6552; --rail:#3c3a38;
+  --coach:#22508e; --coach-roof:#173a69; --cream:#f4ecd8; --ink:#1b2430;
+  --engine:#df7a25; --engine-band:#f6e4c2; --van:#6c3a29;
+  --board:#f2c230; --platform:#d8d1c2; --platform-edge:#efc531; --muted:#5d6470;
+  --display:"Rozha One", Georgia, "Times New Roman", serif;
+  --body:"Mukta", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --stencil:"Saira Stencil One", "Arial Narrow", Impact, sans-serif;
+  color-scheme:light;
+}
+html,body{height:100%}
+body{background:var(--platform);color:var(--ink);font-family:var(--body);overflow:hidden;
+  -webkit-user-select:none;user-select:none;-webkit-touch-callout:none;-webkit-tap-highlight-color:transparent}
+img{-webkit-user-drag:none;pointer-events:none}
+#app{height:100%;display:flex;flex-direction:column;touch-action:none;position:relative}
+
+/* header over the sky */
+header{position:absolute;inset:0 0 auto;z-index:5;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:12px 0;display:flex;align-items:center;gap:12px}
+.track{flex:1;position:relative;height:22px}
+.track::before{content:"";position:absolute;left:0;right:0;top:50%;height:3px;border-radius:2px;
+  background:repeating-linear-gradient(90deg,rgba(27,36,48,.35) 0 6px,transparent 6px 10px)}
+.track .fill{position:absolute;left:0;top:50%;height:3px;border-radius:2px;background:var(--ink);width:0}
+.track .loco{position:absolute;top:50%;left:0;width:22px;height:12px;margin-top:-7px;margin-left:-11px;background:var(--engine);border:2px solid var(--ink);border-radius:5px 3px 3px 3px}
+.track .end{position:absolute;right:-2px;top:-1px;font:800 10px/1 var(--body);letter-spacing:.08em;background:var(--board);border:1.5px solid var(--ink);padding:3px 4px 2px;transform:translateX(100%)}
+.trackwrap{flex:1;padding-right:58px}
+.mute{border:0;background:rgba(255,255,255,.55);color:var(--ink);width:38px;height:38px;border-radius:50%;font-size:17px;cursor:pointer;flex:none}
+.mute:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+
+/* scene */
+.scene{flex:1;position:relative;overflow:hidden;min-height:330px;
+  background:linear-gradient(180deg,var(--sky-top) 0%,var(--sky-low) 72%)}
+.sun{position:absolute;right:16%;bottom:44%;width:70px;height:70px;border-radius:50%;background:#fbe2a6;box-shadow:0 0 60px 20px rgba(251,226,166,.6)}
+.hills{position:absolute;left:0;right:0;bottom:60px;height:46%}
+.hills svg{width:100%;height:100%;display:block}
+.ground{position:absolute;left:0;right:0;bottom:0;height:64px;background:var(--ballast)}
+.ground::before{content:"";position:absolute;left:0;right:0;top:4px;height:5px;background:var(--rail)}
+.ground::after{content:"";position:absolute;left:0;right:0;top:12px;height:10px;
+  background:repeating-linear-gradient(90deg,#5a4637 0 14px,transparent 14px 34px)}
+
+/* station board, hidden behind the train */
+.board{position:absolute;left:50%;transform:translateX(-50%);bottom:60px;width:min(72vw,300px);z-index:1;text-align:center}
+.board .plate{background:var(--board);border:3px solid var(--ink);box-shadow:0 0 0 4px var(--board);padding:10px 8px 6px;border-radius:3px}
+.board .name{font:800 clamp(34px,10vw,48px)/1 var(--body);letter-spacing:.06em;color:#111}
+.board .code{font:600 12px/1.4 var(--body);letter-spacing:.2em;color:#111;margin-top:2px}
+.board .poles{display:flex;justify-content:space-between;padding:0 18%;height:70px}
+.board .poles i{width:7px;background:#3d3d3d}
+
+/* train */
+.strip{position:absolute;left:0;bottom:56px;height:var(--H);z-index:2;will-change:transform}
+.unit{position:absolute;top:0;width:var(--W);height:var(--H)}
+.unit .roof{position:absolute;left:3%;right:3%;top:0;height:16px;background:var(--coach-roof);border-radius:12px 12px 0 0}
+.unit .shell{position:absolute;left:0;right:0;top:12px;bottom:34px;background:var(--coach);border-radius:6px;overflow:hidden}
+.unit .shell::before{content:"";position:absolute;left:0;right:0;top:12px;height:8px;background:var(--cream);opacity:.85}
+.unit .shell::after{content:"";position:absolute;left:0;right:0;bottom:10px;height:4px;background:var(--cream);opacity:.85}
+.unit .no{position:absolute;right:12px;top:22px;font:13px/1 var(--stencil);color:var(--cream);letter-spacing:.06em;z-index:1}
+.unit .coupler{position:absolute;left:calc(var(--g) * -1);width:var(--g);top:34px;bottom:46px;background:#262626}
+.panel{position:absolute;left:14px;right:14px;top:40px;bottom:22px;background:var(--cream);border:2px solid #0f2a4e;border-radius:4px;
+  display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:8px 12px;gap:2px}
+.panel .q{font:13px/1.3 var(--stencil);letter-spacing:.12em;color:var(--coach);text-wrap:balance;margin-bottom:2px}
+.panel .big{font:clamp(26px,7.4vw,34px)/1.1 var(--display);color:var(--ink);text-wrap:balance}
+.panel .sub{font:600 15px/1.3 var(--body);color:var(--muted);text-wrap:balance}
+.panel.row{flex-direction:row;gap:14px;justify-content:center;text-align:left}
+.panel.row .txt{display:flex;flex-direction:column;gap:2px;min-width:0}
+.photo{flex:none;width:96px;height:96px;border:3px solid #0f2a4e;border-radius:6px;overflow:hidden;
+  background:linear-gradient(160deg,#f1c9a5,#c98a6a);display:grid;place-items:center;text-align:center;font:600 11px/1.2 var(--body);color:#5b3322;padding:6px}
+.photo img{width:100%;height:100%;object-fit:cover}
+.under{position:absolute;left:4%;right:4%;bottom:12px;height:24px;background:#2a2a2a;border-radius:3px}
+.bogie{position:absolute;bottom:-12px;display:flex;gap:6px}
+.bogie.a{left:8%}.bogie.b{right:8%}
+.wheel{width:26px;height:26px;border-radius:50%;border:3px solid #1b1b1b;background:repeating-conic-gradient(#4b4b4b 0 22deg,#8a8a8a 22deg 45deg);transform:rotate(var(--rot,0deg))}
+
+.engine .shell{background:var(--engine);border-radius:30px 6px 6px 6px}
+.engine .roof{background:#9b4d17;left:10%}
+.engine .shell::before,.engine .shell::after{background:var(--engine-band)}
+.engine .no{color:#3b1c06}
+.engine .panel{left:84px;border-color:#7a3a10}
+.engine .panel .q{color:#a24a12}
+.engine .cab{position:absolute;left:14px;top:40px;width:56px;height:58px;background:#2e3f52;border:3px solid #7a3a10;border-radius:16px 4px 4px 4px}
+.engine .lamp{position:absolute;left:8px;bottom:30px;width:14px;height:14px;border-radius:50%;background:#fff6c9;box-shadow:0 0 14px 4px rgba(255,240,170,.9)}
+.van .shell{background:var(--van)}
+.van .roof{background:#4a271b}
+.van .panel{border-color:#4a271b}
+.van .panel .q{color:var(--van)}
+
+/* start overlay */
+.start{position:absolute;inset:0;z-index:8;display:grid;place-items:center;background:rgba(244,236,216,.82);backdrop-filter:blur(3px);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.start .card{text-align:center;display:flex;flex-direction:column;gap:14px;align-items:center;max-width:340px}
+.start .tag{font:14px/1 var(--stencil);letter-spacing:.14em;color:var(--coach)}
+.start h1{margin:0;font:clamp(36px,11vw,52px)/1.05 var(--display);color:var(--ink);text-wrap:balance}
+.start p{margin:0;font:600 16px/1.4 var(--body);color:var(--muted)}
+.btn{font:800 17px/1 var(--body);letter-spacing:.02em;border:0;cursor:pointer;border-radius:999px;padding:16px 28px;background:var(--ink);color:var(--cream);text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+.btn.alt{background:transparent;color:var(--ink);border:2px solid var(--ink)}
+
+/* platform */
+.platform{position:relative;flex:none;height:min(34vh,250px);min-height:200px;background:var(--platform);
+  border-top:10px solid var(--platform-edge);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:14px 16px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px}
+.platform::before{content:"";position:absolute;left:0;right:0;top:-10px;height:10px;background:repeating-linear-gradient(90deg,transparent 0 22px,rgba(0,0,0,.18) 22px 24px)}
+.lever{position:relative;width:150px;height:110px;pointer-events:none}
+.lever .base{position:absolute;left:25px;right:25px;bottom:0;height:30px;background:#3a3f47;border-radius:10px 10px 4px 4px}
+.lever .slot{position:absolute;left:50px;right:50px;bottom:24px;height:8px;background:#1d2026;border-radius:4px}
+.lever .arm{position:absolute;left:71px;bottom:20px;width:8px;height:78px;background:#9aa1ab;border-radius:4px;transform-origin:50% 100%;transform:rotate(-32deg);transition:transform .18s ease}
+.lever .arm::after{content:"";position:absolute;left:-11px;top:-18px;width:30px;height:30px;border-radius:50%;background:#c8312a;box-shadow:inset -4px -4px 0 rgba(0,0,0,.18)}
+.holding .lever .arm{transform:rotate(32deg)}
+.lever.pulse .arm::after{animation:pulse 1.1s ease-in-out infinite}
+@keyframes pulse{50%{box-shadow:inset -4px -4px 0 rgba(0,0,0,.18),0 0 0 10px rgba(200,49,42,.25)}}
+.lever-label{font:14px/1 var(--stencil);letter-spacing:.16em;color:var(--ink)}
+.hint{position:absolute;left:50%;bottom:calc(100% + 20px);transform:translateX(-50%);z-index:6;background:var(--ink);color:var(--cream);
+  font:600 16px/1.3 var(--body);padding:12px 18px;border-radius:12px;width:max-content;max-width:calc(100vw - 40px);text-align:center;
+  box-shadow:0 8px 24px rgba(0,0,0,.25);animation:pop .3s ease}
+.hint::after{content:"";position:absolute;left:50%;bottom:-8px;margin-left:-8px;border:8px solid transparent;border-bottom:0;border-top-color:var(--ink)}
+@keyframes pop{from{opacity:0;transform:translate(-50%,8px)}}
+
+/* final details */
+.final{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;max-width:420px;width:100%}
+.final .names{font:30px/1.05 var(--display)}
+.final .who{font:600 14px/1.3 var(--body);color:var(--muted)}
+.final .when{font:800 16px/1.3 var(--body)}
+.final .where{font:400 15px/1.35 var(--body);color:var(--ink)}
+.final .acts{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:6px}
+.final .btn{padding:13px 20px;font-size:15px}
+
+@media (prefers-reduced-motion:reduce){.lever.pulse .arm::after,.hint{animation:none}}
+</style>
+</head>
+<body>
+
+
+<div id="app">
+  <header>
+    <div class="trackwrap"><div class="track" aria-hidden="true"><div class="fill" id="fill"></div><div class="loco" id="loco"></div><span class="end">UBL</span></div></div>
+    <button class="mute" id="mute" aria-label="Mute sound">🔊</button>
+  </header>
+
+  <div class="scene" id="scene">
+    <div class="sun"></div>
+    <div class="hills" aria-hidden="true">
+      <svg viewBox="0 0 400 140" preserveAspectRatio="none">
+        <path d="M0 80 C60 40 110 60 160 50 C220 36 260 70 320 48 C360 34 385 46 400 42 L400 140 L0 140Z" fill="var(--hill-far)"/>
+        <path d="M0 110 C50 86 90 100 140 92 C200 80 240 104 300 94 C350 86 380 98 400 92 L400 140 L0 140Z" fill="var(--hill-near)"/>
+      </svg>
+    </div>
+    <div class="board" aria-hidden="true">
+      <div class="plate"><div class="name">HUBBALLI</div><div class="code">UBL</div></div>
+      <div class="poles"><i></i><i></i></div>
+    </div>
+    <div class="ground"></div>
+    <div class="strip" id="strip"></div>
+
+    <div class="start" id="start">
+      <div class="card">
+        <div class="tag">WEDDING EXPRESS</div>
+        <h1>You have a wedding invitation</h1>
+        <p>Turn your sound on and climb aboard.</p>
+        <button class="btn" id="go">Tap to start 🚂</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="platform" id="platform">
+    <div id="hintSlot"></div>
+    <div class="lever" id="lever" aria-hidden="true"><div class="base"></div><div class="slot"></div><div class="arm"></div></div>
+    <div class="lever-label" id="leverLabel">HOLD TO RUN</div>
+    <div class="final" id="final" hidden>
+      <div class="names">Ajeet weds Arpita</div>
+      <div class="who">We warmly invite you to our wedding</div>
+            <div class="when">Monday, 14 December 2026 · Muhurtham 12:36 PM</div>
+      <div class="where">Rayara Matha, Navanagar, Hubballi-Dharwad</div>
+      <div class="acts">
+        <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Rayara+Matha+Navanagar+Hubballi">📍 Open in Maps</a>
+        <button class="btn alt" id="again">↻ Ride again</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  // Replace with a data: URI or image URL of the couple's photo.
+  const PHOTO = "";
+
+  const UNITS = [
+    {cls:"engine", no:"WDM 1412", html:`<div class="q">WEDDING EXPRESS</div><div class="big">Ajeet weds Arpita</div>`},
+    {cls:"", no:"S1", row:true, html:`<div class="photo">${PHOTO?`<img src="${PHOTO}" alt="">`:"Your photo here"}</div><div class="txt"><div class="q">WITH THE BLESSINGS OF OUR ELDERS</div><div class="big">We are getting married</div></div>`},
+    {cls:"", no:"S2", html:`<div class="q">ON</div><div class="big">Monday,<br>14 December 2026</div>`},
+    {cls:"", no:"S3", html:`<div class="q">AT THE AUSPICIOUS MUHURTHAM</div><div class="big">12:36 PM</div>`},
+    {cls:"", no:"S4", html:`<div class="q">AT</div><div class="big">Rayara Matha</div><div class="sub">Navanagar, Hubballi-Dharwad</div>`},
+    {cls:"van", no:"SLR", html:`<div class="q">WE WARMLY INVITE YOU</div><div class="big">Your presence will be our blessing</div><div class="sub">Ajeet &amp; Arpita 🙏</div>`}
+  ];
+
+  const $ = id => document.getElementById(id);
+  const app=$("app"), scene=$("scene"), strip=$("strip"), lever=$("lever"), leverLabel=$("leverLabel"),
+        hintSlot=$("hintSlot"), finalEl=$("final"), fill=$("fill"), loco=$("loco");
+  const G = 10;
+  let W=360, H=230, cx=180, xVan=1800, xOff=2400, vmax=130;
+
+  strip.innerHTML = UNITS.map((u,i)=>`
+    <div class="unit ${u.cls}" style="left:${0}px" data-i="${i}">
+      ${i? '<div class="coupler"></div>':''}
+      <div class="roof"></div>
+      <div class="shell">${u.cls==="engine"?'<div class="cab"></div>':''}<div class="no">${u.no}</div></div>
+      ${u.cls==="engine"?'<div class="lamp"></div>':''}
+      <div class="panel ${u.row?'row':''}">${u.html}</div>
+      <div class="under"></div>
+      <div class="bogie a"><div class="wheel"></div><div class="wheel"></div></div>
+      <div class="bogie b"><div class="wheel"></div><div class="wheel"></div></div>
+    </div>`).join("");
+  const units=[...strip.querySelectorAll(".unit")];
+
+  function layout(){
+    const sw=scene.clientWidth;
+    W=Math.min(sw*0.9,420); H=Math.max(200,Math.min(240,W*0.62)); cx=sw/2;
+    strip.style.setProperty("--W",W+"px"); strip.style.setProperty("--H",H+"px"); strip.style.setProperty("--g",G+"px");
+    units.forEach((u,i)=>u.style.left=(i*(W+G))+"px");
+    xVan=5*(W+G);
+    xOff=cx - W/2 + 6*W + 5*G + 30;
+    vmax=xVan/14;
+    render(0);
+  }
+
+  const S={started:false,holding:false,x:0,v:0,fin:false,auto:false,last:0,muted:false,bob:0,beat:0};
+  const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // ---- sound ----
+  let ac=null, noise=null;
+  function audioInit(){
+    try{
+      ac=ac||new (window.AudioContext||window.webkitAudioContext)();
+      if(ac.state==="suspended") ac.resume();
+      if(!noise){
+        noise=ac.createBuffer(1,ac.sampleRate*0.2,ac.sampleRate);
+        const d=noise.getChannelData(0); for(let i=0;i<d.length;i++) d[i]=Math.random()*2-1;
+      }
+    }catch(e){ac=null}
+  }
+  function chug(strength){
+    if(!ac||S.muted) return;
+    try{
+      const src=ac.createBufferSource(); src.buffer=noise;
+      const f=ac.createBiquadFilter(); f.type="bandpass"; f.frequency.value=700; f.Q.value=0.8;
+      const g=ac.createGain(); const t=ac.currentTime;
+      g.gain.setValueAtTime(0.0001,t); g.gain.exponentialRampToValueAtTime(0.18*strength+0.03,t+0.01);
+      g.gain.exponentialRampToValueAtTime(0.0001,t+0.14);
+      src.connect(f).connect(g).connect(ac.destination); src.start(t); src.stop(t+0.16);
+    }catch(e){}
+  }
+  function whistle(){
+    if(!ac||S.muted) return;
+    try{
+      const t=ac.currentTime, g=ac.createGain();
+      g.gain.setValueAtTime(0.0001,t); g.gain.exponentialRampToValueAtTime(0.12,t+0.08);
+      g.gain.setValueAtTime(0.12,t+0.9); g.gain.exponentialRampToValueAtTime(0.0001,t+1.3);
+      g.connect(ac.destination);
+      [587,740,880].forEach(fq=>{const o=ac.createOscillator(); o.type="triangle"; o.frequency.value=fq; o.connect(g); o.start(t); o.stop(t+1.35);});
+    }catch(e){}
+  }
+  function buzz(){ try{ navigator.vibrate && navigator.vibrate(14); }catch(e){} }
+
+  // ---- hint ----
+  let hintShown=null;
+  function setHint(text){
+    if(text===hintShown) return; hintShown=text;
+    hintSlot.innerHTML = text? `<div class="hint" role="status">${text}</div>` : "";
+    lever.classList.toggle("pulse",!!text);
+  }
+
+  // ---- input ----
+  function press(e){
+    if(!S.started||S.fin||S.auto) return;
+    if(e && e.target.closest && e.target.closest("button,a")) return;
+    if(e && e.cancelable) e.preventDefault();
+    audioInit();
+    S.holding=true; app.classList.add("holding"); leverLabel.textContent="RUNNING"; setHint(null);
+  }
+  function release(){
+    if(!S.holding) return;
+    S.holding=false; app.classList.remove("holding"); leverLabel.textContent="HOLD TO RUN"; S.last=performance.now();
+  }
+  app.addEventListener("pointerdown",e=>{ press(e); try{ if(S.holding) app.setPointerCapture(e.pointerId);}catch(_){} });
+  ["pointerup","pointercancel"].forEach(t=>window.addEventListener(t,release));
+  window.addEventListener("blur",release);
+  document.addEventListener("visibilitychange",()=>{ if(document.hidden) release(); });
+  app.addEventListener("contextmenu",e=>e.preventDefault());
+  app.addEventListener("selectstart",e=>e.preventDefault());
+  window.addEventListener("keydown",e=>{ if(e.code==="Space"&&!e.repeat){ e.preventDefault(); press(); } });
+  window.addEventListener("keyup",e=>{ if(e.code==="Space") release(); });
+
+  $("go").addEventListener("click",()=>{
+    audioInit(); whistle();
+    $("start").hidden=true; S.started=true; S.last=performance.now();
+  });
+  $("again").addEventListener("click",()=>{
+    S.x=0; S.v=0; S.fin=false; S.auto=false; S.last=performance.now();
+    finalEl.hidden=true; lever.hidden=false; leverLabel.hidden=false;
+    audioInit(); whistle(); render(0);
+  });
+  $("mute").addEventListener("click",()=>{
+    S.muted=!S.muted; $("mute").textContent=S.muted?"🔇":"🔊";
+    $("mute").setAttribute("aria-label",S.muted?"Turn sound on":"Mute sound");
+  });
+
+  // ---- loop ----
+  function render(dt){
+    const bobY = (!reduce && S.v>2) ? Math.sin(S.bob)*1.2 : 0;
+    strip.style.transform=`translate3d(${cx - W/2 - S.x}px,${bobY}px,0)`;
+    strip.style.setProperty("--rot",(S.x/13*57.3)%360+"deg");
+    const p=Math.min(1,S.x/xVan);
+    fill.style.width=(p*100)+"%"; loco.style.left=(p*100)+"%";
+  }
+  let prev=performance.now();
+  function tick(now){
+    const dt=Math.min(0.05,(now-prev)/1000); prev=now;
+    if(S.started && !S.fin){
+      if(!S.auto && S.x>=xVan){ S.auto=true; release(); setHint(null); }
+      const target = (S.holding||S.auto) ? vmax*(S.auto?1.3:1) : 0;
+      S.v += (target-S.v)*Math.min(1,dt*(target>S.v?3:7));
+      if(S.v<0.5 && target===0) S.v=0;
+      S.x += S.v*dt;
+      if(!S.auto && S.x>xVan) S.x=xVan;
+      S.bob += dt*S.v/18;
+      // chug rhythm tied to speed
+      if(S.v>3){
+        S.beat += dt*(1.2 + 5*(S.v/vmax));
+        if(S.beat>=1){ S.beat-=1; chug(Math.min(1,S.v/vmax)); if(S.holding) buzz(); }
+      }
+      if(S.auto && S.x>=xOff){ S.fin=true; S.v=0; finish(); }
+      // idle hint
+      if(!S.holding && !S.auto && S.v===0 && now-S.last>3000){
+        setHint(S.x<4 ? "Hold anywhere to move the train 🚂" : "Keep holding. More ahead ▶");
+      }
+      render(dt);
+    }
+    requestAnimationFrame(tick);
+  }
+  function finish(){
+    setHint(null); lever.hidden=true; leverLabel.hidden=true; finalEl.hidden=false;
+    fill.style.width="100%"; loco.style.left="100%";
+    whistle();
+  }
+
+  addEventListener("resize",layout);
+  layout();
+  requestAnimationFrame(tick);
+})();
+</script>
+
+</body>
+</html>
