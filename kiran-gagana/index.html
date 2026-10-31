@@ -114,8 +114,9 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offse
 .thread{stroke:rgba(244,236,220,.35);stroke-width:1;stroke-dasharray:2 3;opacity:0;transition:opacity .5s}
 .thread.shown{opacity:1}
 .hero{position:absolute;inset:0;z-index:3;display:grid;place-items:center;background:linear-gradient(180deg,rgba(13,29,41,.2),rgba(13,29,41,.9)),#3a4a55;animation:rise .8s ease}
-.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%}
-.hero::after{content:"";position:absolute;inset:auto 0 0;height:30%;background:linear-gradient(180deg,transparent,var(--night))}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.hero img.fill{object-fit:cover;filter:blur(22px) brightness(.45);transform:scale(1.15)}
+.hero::after{content:"";position:absolute;inset:auto 0 0;height:8%;background:linear-gradient(180deg,transparent,var(--night))}
 .hero .ph{width:min(70%,320px);aspect-ratio:4/5;border:2px dashed rgba(244,236,220,.5);border-radius:8px;display:grid;place-items:center;font:700 13px var(--body);letter-spacing:.2em;color:var(--ivory)}
 [hidden]{display:none!important}
 @media (prefers-reduced-motion:reduce){.him-ring,.ring.pulse .dot,.hint,.line.swap,.final{animation:none}}
@@ -272,7 +273,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offse
     if(front && carG.previousSibling!==front.g){ svg.appendChild(front.g); svg.appendChild(carG); }
   }
 
-  $("hero").innerHTML=`<img src="${HERO}" alt="Kiran and Gagana">`;
+  $("hero").innerHTML=`<img class="fill" src="${HERO}" alt=""><img src="${HERO}" alt="Kiran and Gagana">`;
   // ---- stars ----
   (function(){const c=$("stars"),x=c.getContext("2d");function draw(){c.width=innerWidth;c.height=innerHeight;x.clearRect(0,0,c.width,c.height);
     let s=7;const r=()=>(s=(s*9301+49297)%233280)/233280;for(let i=0;i<90;i++){x.fillStyle=`rgba(244,236,220,${.15+r()*.5})`;x.beginPath();x.arc(r()*c.width,r()*c.height,r()*1.3+.2,0,7);x.fill()}}
