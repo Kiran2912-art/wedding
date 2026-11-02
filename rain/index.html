@@ -543,7 +543,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offse
       parts.push({c,x,y,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,r,life:0});
     }
     const ring=el("ellipse",{class:"ripple",cx:x,cy:y,rx:0,ry:0},fx); parts.push({ring,x,y,life:0});
-    setTimeout(()=>{ if(S.phase!=="burst") return; S.phase="final"; $("final").hidden=false; },1800);
+    setTimeout(()=>{ if(S.phase!=="burst") return; S.phase="final"; $("final").hidden=false; },1500);
   }
 
   // ---- loop ----
@@ -551,7 +551,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offse
   function tick(now){
     const dt=Math.min(.05,(now-prev)/1000); prev=now; S.clock+=dt;
 
-    if(S.phase==="intro"&&S.clock-S.introAt>2.0){
+    if(S.phase==="intro"&&S.clock-S.introAt>1.6){
       const l=leaves[0]; const p=toWorld(l,l.L*.2,0);
       S.x=p[0]; S.y=S.cam-40; S.vy=150; S.vx=0; S.phase="fall"; drop.style.opacity=1; $("bar").classList.remove("off");
     }
@@ -559,7 +559,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offse
 
     if(S.phase==="roll"){
       const l=leaves[S.leaf];
-      const tv=S.holding?.62*flow(l,S.t):0;
+      const tv=S.holding?1.15*flow(l,S.t):0;
       S.v+=(tv-S.v)*Math.min(1,dt*(tv>S.v?3:9)); if(tv===0&&S.v<.002)S.v=0;
       S.t=Math.min(1,S.t+S.v*dt);
       const lx=l.L*S.t, ly=meander(l,S.t);
