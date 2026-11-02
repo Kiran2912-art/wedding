@@ -38,7 +38,7 @@ body{background:var(--night);color:var(--ivory);font-family:var(--body);overflow
     linear-gradient(180deg,var(--night-2),var(--night))}
 #world{position:absolute;left:50%;top:0;width:min(100%,460px);will-change:transform;z-index:1}
 #sky{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
-#flash{position:absolute;inset:0;pointer-events:none;z-index:3;opacity:0;mix-blend-mode:screen;
+#flash{position:absolute;inset:0;pointer-events:none;z-index:3;opacity:0;visibility:hidden;mix-blend-mode:screen;
   background:radial-gradient(130% 85% at var(--fx,50%) 0%,rgba(228,236,255,.95),rgba(165,190,255,.28) 55%,rgba(120,150,230,.05))}
 #world svg{display:block;width:100%;height:auto;overflow:visible}
 #rain{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:2}
@@ -178,7 +178,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offse
 
   const $=id=>document.getElementById(id);
   const NS="http://www.w3.org/2000/svg";
-  const W=400, GRAV=1500, R=34, P=92, BMAX=.17, FALL=125;
+  const W=400, GRAV=2100, R=34, P=92, BMAX=.17, FALL=125;
   const N=LEAVES.length;
   let seed=11; const rnd=()=>(seed=(seed*16807)%2147483647)/2147483647;
 
@@ -194,6 +194,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offse
   grad("rimG",[[0,"#ffffff",0],[.7,"#ffffff",.04],[.9,"#0c2c16",.32],[1,"#ffffff",.75]],{cx:.5,cy:.5,r:.5},"radialGradient");
   grad("fallG",[[0,"#ffffff",.75],[.4,"#d6f2ea",.22],[.92,"#7fb9a8",.45],[1,"#ffffff",.7]],{cx:.4,cy:.36,r:.62},"radialGradient");
   grad("sparkG",[[0,"#ffffff",.95],[1,"#bfe6db",.6]],{cx:.35,cy:.35,r:.7},"radialGradient");
+  grad("dshG",[[0,"#000",.38],[.6,"#000",.18],[1,"#000",0]],{cx:.5,cy:.5,r:.5},"radialGradient");
   grad("glossG",[[0,"#ffffff",.3],[.6,"#ffffff",.05],[1,"#ffffff",0]],{x1:0,y1:0,x2:0,y2:1});
   grad("groundG",[[0,"#13302a"],[1,"#07110d"]],{x1:0,y1:0,x2:0,y2:1});
   grad("glowG",[[0,"#ffcf8a",.38],[.55,"#ffb870",.12],[1,"#ffb870",0]],{cx:.5,cy:.5,r:.5},"radialGradient");
@@ -255,11 +256,11 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offse
     el("path",{d:`M2 ${sky*-2} q14 ${sky*-16} 30 ${sky*-6} q-14 ${sky*4} -30 ${sky*6}Z`,fill:c.c[0]},g);
     const b=el("g",{transform:`translate(${P} 0)`},g); l.b=b;
     const shape=blade(L,HW);
-    el("path",{d:shape.full,fill:"rgba(0,0,0,.5)",transform:`translate(${side*6} 16)`,filter:"url(#soft)"},b);
+    el("path",{d:shape.full,fill:"rgba(0,0,0,.16)",transform:`translate(${side*9} 22) scale(1.02)`},b);
+    el("path",{d:shape.full,fill:"rgba(0,0,0,.2)",transform:`translate(${side*5} 13)`},b);
     const body=el("g",{id:"blade"+i},b);
     el("path",{d:shape.full,fill:c.c[1]},body);
     el("path",{d:shape.upper,fill:c.c[0]},body);
-    el("path",{d:shape.full,fill:"url(#grain)",opacity:.16},body);
     // pinnate veins curving towards the tip
     let v="";
     for(let k=0;k<8;k++){
@@ -279,20 +280,18 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offse
       el("circle",{class:"bead-hi",cx:bx-r*.35,cy:by-r*.3,r:r*.28},beads);
     }
     l.trail=el("path",{class:"trail",d:""},b);
-    // words across the middle; a sliding mask reveals them behind the drop as it rolls
+    // words across the middle; a sliding clip reveals them behind the drop as it rolls (its edge always sits under the drop)
     const TX=L*.47; l.TX=TX;
-    const mg=grad("wash"+i,[[0,"#fff"],[1,"#000"]],{gradientUnits:"userSpaceOnUse",x1:-9999,y1:0,x2:-9998,y2:0});
-    l.mg=mg;
-    const mask=el("mask",{id:"mask"+i,maskUnits:"userSpaceOnUse",x:-400,y:-200,width:800,height:400},defs);
-    el("rect",{x:-400,y:-200,width:800,height:400,fill:`url(#wash${i})`},mask);
-    const tg=el("g",{id:"txt"+i,class:"txt",transform:`translate(${TX} 0)${side<0?" rotate(180)":""}`,mask:`url(#mask${i})`},b);
+    const wc=el("clipPath",{id:"wclip"+i},defs); l.wr=el("rect",{x:-1000,y:-200,width:0,height:400},wc);
+    const tg=el("g",{id:"txt"+i,class:"txt",transform:`translate(${TX} 0)${side<0?" rotate(180)":""}`},b);
+    l.tg=tg; tg.style.visibility="hidden";
     l.lines=[];
     const eb=el("text",{class:"eb",x:0,y:-24},tg); eb.textContent=c.e; l.lines.push([eb,L*.55]);
     const mn=el("text",{class:"mn",x:0,y:c.s?11:16},tg); mn.textContent=c.m; l.lines.push([mn,L*.62]);
     if(c.s){const sb=el("text",{class:"sb",x:0,y:35},tg); sb.textContent=c.s; l.lines.push([sb,L*.52]);}
     // the drop resting on the leaf: shadow, a magnifying lens of what's beneath, and its rim + highlights
     const lb=el("g",{class:"lensbits"},b); l.lb=lb;
-    l.shadow=el("ellipse",{rx:R*.95,ry:R*.8,fill:"rgba(0,0,0,.28)",filter:"url(#soft)"},lb);
+    l.shadow=el("ellipse",{rx:R*1.15,ry:R*1.0,fill:"url(#dshG)"},lb);
     const cp=el("clipPath",{id:"clip"+i},defs); l.clipC=el("ellipse",{rx:R,ry:R},cp);
     const lens=el("g",{"clip-path":`url(#clip${i})`},lb);
     l.lensUse=[el("use",{href:"#blade"+i},lens), el("use",{href:"#txt"+i},lens)];
@@ -365,7 +364,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offse
   // uneven flow: hesitates, sticks for a moment, then slides on
   function flow(l,t){
     let n=.6+.4*Math.sin(t*15+l.ph)*Math.sin(t*5.7+l.ph*2);
-    for(const s of l.sticks){const d=Math.abs(t-s); if(d<.04) n*=.1+.9*d/.04;}
+    for(const s of l.sticks){const d=Math.abs(t-s); if(d<.035) n*=.35+.65*d/.035;}
     return Math.max(.07,n);
   }
   const meander=(l,t)=>(3*Math.sin(t*9+l.ph))*(1-Math.max(0,(t-.86)/.14));
@@ -454,7 +453,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offse
   // flash shape: bright, dip, second flicker, slow fade (no rapid repeats)
   const flashCurve=t=>t<.06?1:t<.13?.22:t<.21?.8:Math.max(0,.8*(1-(t-.21)/.55));
   function skyStep(dt){
-    if(flashT>=0){ flashT+=dt; flashEl.style.opacity=(flashCurve(flashT)*flashP*.36).toFixed(3); if(flashT>.8){flashT=-1;flashEl.style.opacity=0;} }
+    if(flashT>=0){ flashT+=dt; flashEl.style.visibility="visible"; flashEl.style.opacity=(flashCurve(flashT)*flashP*.36).toFixed(3); if(flashT>.8){flashT=-1;flashEl.style.opacity=0;flashEl.style.visibility="hidden";} }
     if(!bolts.length) return;
     const w=app.clientWidth,h=app.clientHeight; sk.clearRect(0,0,w,h);
     bolts=bolts.filter(b=>{
@@ -514,11 +513,15 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offse
 
   function setWash(l,lx){
     // the drop writes the words: everything it has passed shows, everything ahead is still hidden
-    const tx=l.side>0?lx-l.TX:l.TX-lx, dir=l.side>0?1:-1;
-    l.mg.setAttribute("x1",(tx+dir*R*.15).toFixed(1)); l.mg.setAttribute("x2",(tx+dir*R*.65).toFixed(1));
+    const tx=l.side>0?lx-l.TX:l.TX-lx, edge=R*.4;
+    if(l.side>0){ l.wr.setAttribute("x",-1000); l.wr.setAttribute("width",Math.max(0,tx+edge+1000).toFixed(1)); }
+    else { l.wr.setAttribute("x",(tx-edge).toFixed(1)); l.wr.setAttribute("width",2000); }
   }
+  function startWriting(l){ l.tg.setAttribute("clip-path",`url(#wclip${l.i})`); l.tg.style.visibility="visible"; }
+  function finishWriting(l){ l.tg.removeAttribute("clip-path"); l.tg.style.visibility="visible"; }
+  function hideWriting(l){ l.tg.removeAttribute("clip-path"); l.tg.style.visibility="hidden"; }
   function begin(){
-    leaves.forEach(l=>{l.g.classList.remove("wet","here");l.bend=0;l.bv=0;l.pts=[];l.trail.setAttribute("d","");l.mg.setAttribute("x1",-9999);l.mg.setAttribute("x2",-9998);});
+    leaves.forEach(l=>{l.g.classList.remove("wet","here");l.bend=0;l.bv=0;l.pts=[];l.trail.setAttribute("d","");hideWriting(l);});
     fx.innerHTML=""; parts=[]; $("final").hidden=true; scene.classList.remove("lit");
     Object.assign(S,{phase:"intro",leaf:0,t:0,v:0,x:0,y:-60,vy:0,vx:0,cam:0,rain:1,introAt:S.clock});
     drop.style.opacity=0; $("bar").classList.add("off"); setHint(null); setRainSound(1);
@@ -527,9 +530,9 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offse
 
   function land(){
     const l=leaves[S.leaf];
-    S.phase="roll"; S.v=0;
+    S.phase="roll"; S.v=S.holding?.55:0;   // keep the drop's momentum through the landing
     S.t=Math.max(.05,((S.x-l.ax)/Math.cos(l.ang)-P)/l.L);
-    l.lx=S.t*l.L; l.ly=0; setWash(l,l.lx);
+    l.lx=S.t*l.L; l.ly=0; setWash(l,l.lx); startWriting(l);
     l.pts=[]; l.g.classList.add("wet","here"); drop.style.opacity=0;
     l.bv+=2.4;                         // impact: the leaf dips, then settles under the weight
     plink(1150+S.leaf*90); buzz(22); S.last=performance.now();
@@ -549,7 +552,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offse
   // ---- loop ----
   let prev=performance.now();
   function tick(now){
-    const dt=Math.min(.05,(now-prev)/1000); prev=now; S.clock+=dt;
+    const dt=Math.min(.1,(now-prev)/1000); prev=now; S.clock+=dt;
 
     if(S.phase==="intro"&&S.clock-S.introAt>1.6){
       const l=leaves[0]; const p=toWorld(l,l.L*.2,0);
@@ -559,7 +562,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offse
 
     if(S.phase==="roll"){
       const l=leaves[S.leaf];
-      const tv=S.holding?1.15*flow(l,S.t):0;
+      const tv=S.holding?.84*flow(l,S.t):0;
       S.v+=(tv-S.v)*Math.min(1,dt*(tv>S.v?3:9)); if(tv===0&&S.v<.002)S.v=0;
       S.t=Math.min(1,S.t+S.v*dt);
       const lx=l.L*S.t, ly=meander(l,S.t);
@@ -569,8 +572,8 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offse
       if(!lp||Math.hypot(lx-lp[0],ly-lp[1])>3){ l.pts.push([lx,ly]); l.trail.setAttribute("d","M"+l.pts.map(q=>q[0].toFixed(1)+" "+q[1].toFixed(1)).join("L")); }
       setWash(l,lx);
       if(S.t>=1){
-        S.phase="fall"; S.vy=30; S.vx=(rnd()-.5)*10; l.g.classList.remove("here"); drop.style.opacity=1;
-        setWash(l,l.L+R*2); S.leaf++;
+        S.phase="fall"; S.vy=120+S.v*160; S.vx=(rnd()-.5)*10; l.g.classList.remove("here"); drop.style.opacity=1;
+        finishWriting(l); S.leaf++;
       }
       else if(!S.holding&&S.v===0&&now-S.last>3000){
         setHint(S.leaf===0&&l.pts.length<3?"Hold anywhere to let the drop flow":"Keep holding. There's more below ▼");
@@ -595,8 +598,10 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offse
       const target=on?BMAX*(.25+.75*Math.pow(S.t,1.3)):0;
       const k=on?70:48, damp=on?7:3.2;
       l.bv+=((target-l.bend)*k-l.bv*damp)*dt; l.bend+=l.bv*dt;
-      l.ang=l.a0+l.side*(l.bend+.008*Math.sin(S.clock*1.2+i*1.7));
-      l.g.setAttribute("transform",`translate(${l.ax.toFixed(1)} ${l.ay.toFixed(1)}) rotate(${(l.ang*180/Math.PI).toFixed(2)})`);
+      if(!on&&Math.abs(l.bend)<.0004&&Math.abs(l.bv)<.002){ l.bend=0; l.bv=0; }
+      l.ang=l.a0+l.side*l.bend;
+      const tr=`translate(${l.ax.toFixed(1)} ${l.ay.toFixed(1)}) rotate(${(l.ang*180/Math.PI).toFixed(2)})`;
+      if(tr!==l.tr){ l.tr=tr; l.g.setAttribute("transform",tr); }
       if(on){
         // the resting drop: magnify what's under it, keep its highlight lit from the top-left
         const lx=l.lx, ly=l.ly, st=1+Math.min(.12,S.v*.35), angD=l.ang*180/Math.PI;
@@ -629,10 +634,12 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offse
 
     // camera follows the drop; at the end it settles on the couple
     if(S.phase!=="start"){
-      let target=S.phase==="intro"?0:S.y-vh*.42;
+      let focusY=S.y;
+      if(S.phase==="fall"&&S.leaf<N){ const nl=leaves[S.leaf]; focusY=nl.ay+(S.x-nl.ax)*Math.tan(nl.ang); }  // look ahead to where it will land
+      let target=S.phase==="intro"?0:focusY-vh*.42;
       if(S.phase==="burst"||S.phase==="final"||(S.phase==="fall"&&S.leaf>=N)) target=G-vh*.66;
       target=Math.max(0,Math.min(H-vh,target));
-      S.cam+=(target-S.cam)*Math.min(1,dt*(S.phase==="fall"?4.5:3));
+      S.cam+=(target-S.cam)*(1-Math.exp(-dt*(S.phase==="fall"?5:3.5)));
     }
     world.style.transform=`translate(-50%,${(-S.cam*scale).toFixed(1)}px)`;
 
