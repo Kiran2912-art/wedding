@@ -494,7 +494,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offse
   // ---- input ----
   function press(e){
     if(e&&e.target.closest&&e.target.closest("button,a")) return;
-    if(S.phase!=="roll"&&S.phase!=="fall") return;
+    if(S.phase!=="roll"&&S.phase!=="fall"&&S.phase!=="intro") return;  // a hold that starts during the opening rain counts
     if(e&&e.cancelable) e.preventDefault();
     audioInit(); S.holding=true; app.classList.add("holding"); setHint(null);
   }
