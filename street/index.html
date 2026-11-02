@@ -420,7 +420,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offse
   cup(1584,398,.25); cup(1630,398,.75);
   const BB=el("g",{transform:"translate(0 -50)"},B);
   // TV with the news: Kiran's HBB NEWS card, with the LIVE badges popping and the lower bands scrolling
-  const TVX=1528, TVY=240, TVW=230, TVH=129.4, TK=TVW/1672;   // image is 1672×941 at full size
+  const TVX=1550, TVY=250, TVW=188, TVH=105.8, TK=TVW/1672;   // image is 1672×941 at full size
   el("rect",{x:TVX-8,y:TVY-8,width:TVW+16,height:TVH+16,rx:6,fill:"#111"},BB);
   const tvClip=el("clipPath",{id:"tvClip"},defs); el("rect",{x:TVX,y:TVY,width:TVW,height:TVH},tvClip);
   const tv=el("g",{"clip-path":"url(#tvClip)"},BB);
@@ -440,7 +440,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offse
     txt("LIVE",{x:cx+w*.08,y:cy+h*.3,"text-anchor":"middle",class:"t-news","font-size":(h*.82).toFixed(2),fill:"#fff"},g);
     return {g,dot,cx,cy};
   });
-  el("rect",{x:1610,y:358,width:42,height:6,fill:"#111"},BB);
+  el("rect",{x:TVX+TVW/2-22,y:TVY+TVH+8,width:44,height:5,rx:2,fill:"#111"},BB);
   // 4b · mithai (sweet) shop next to the coffee shop
   el("rect",{x:1860,y:186,width:150,height:GY-186,fill:"#f2b84b"},B);
   el("rect",{x:1860,y:186,width:150,height:7,fill:"#8a1c32"},B);
