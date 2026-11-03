@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Kiran weds Gagana · Sunday, 6 December 2026 · Muhurta 12:16 PM · Sannidhi Kalakshetra, Dharwad">
+<meta name="description" content="Kiran weds Gagana · Wedding Sun 6 Dec 2026, 12:16 PM, Sannidhi Kalakshetra, Dharwad · Reception Sun 13 Dec 2026, 10:30 AM, Abhimani Convention Hall, Bengaluru">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Kiran weds Gagana · 6 Dec 2026">
-<meta property="og:description" content="Sunday, 6 December 2026 · Muhurta 12:16 PM · Sannidhi Kalakshetra, Dharwad. Tap to walk with us.">
+<meta property="og:description" content="Wedding: Sun 6 Dec 2026, Sannidhi Kalakshetra, Dharwad · Reception: Sun 13 Dec 2026, Abhimani Convention Hall, Bengaluru. Tap to walk with us.">
 <meta property="og:image" content="https://kiran2912-art.github.io/wedding/street/invite-card.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -76,16 +76,21 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offse
 .btn.alt{background:transparent;color:var(--ivory);border:1.5px solid rgba(251,243,228,.28)}
 .final{overflow-y:auto;background:linear-gradient(180deg,rgba(42,35,72,.88),rgba(75,42,74,.97));animation:fade 1s ease}
 @keyframes fade{from{opacity:0}}
-.photo{position:absolute;top:0;left:0;right:0;height:52%;overflow:hidden}
+.photo{position:absolute;top:0;left:0;right:0;height:40%;overflow:hidden}
 .photo img{width:100%;height:100%;object-fit:cover;object-position:50% 38%;display:block}
 .photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(42,35,72,0) 55%,rgba(52,37,73,.75) 85%,#3b2a4b 100%)}
-.final .card{margin-top:max(46vh,250px);position:relative}
+.final .card{margin-top:max(33vh,200px);position:relative;gap:10px}
 .final{place-items:start center}
 .final .inv{font:500 16px/1.4 var(--body);color:var(--muted);text-wrap:balance}
 .final .when{font:700 16px/1.4 var(--body);color:var(--gold)}
 .final .where{font:500 15px/1.45 var(--body)}
 .final .where b{font-weight:700}
 .acts{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:4px}
+.evs{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%}
+.ev{display:flex;flex-direction:column;align-items:center;gap:6px;padding:12px 8px 14px;border:1px solid rgba(242,193,78,.35);border-radius:14px;background:rgba(29,26,43,.35)}
+.evk{font:700 11px/1 var(--body);letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+.ev .when{font-size:14px}.ev .where{font-size:13px;line-height:1.35}
+.btn.sm{font-size:13px;padding:10px 14px;margin-top:auto}
 @media (prefers-reduced-motion:reduce){.ring.pulse .dot,.hint,.final{animation:none}}
 </style>
 
@@ -104,12 +109,15 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offse
     <div class="card">
       <div class="names">Kiran &amp; Gagana</div>
       <div class="inv">With the blessings of our elders, we warmly invite you to our wedding</div>
-      <div class="when">Sunday, 6 December 2026<br>Muhurta 12:16 PM</div>
-      <div class="where"><b>Sannidhi Kalakshetra</b><br>JSS Campus, Vidyagiri, Dharwad</div>
-      <div class="acts">
-        <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=15.440021,75.0224295">📍 Get directions</a>
-        <button class="btn alt" id="again">↻ Watch again</button>
+      <div class="evs">
+        <div class="ev"><div class="evk">Wedding</div><div class="when">Sun, 6 Dec 2026<br>Muhurta 12:16 PM</div>
+          <div class="where"><b>Sannidhi Kalakshetra</b><br>JSS Campus, Vidyagiri, Dharwad</div>
+          <a class="btn sm" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=15.440021,75.0224295">📍 Directions</a></div>
+        <div class="ev"><div class="evk">Reception</div><div class="when">Sun, 13 Dec 2026<br>10:30 AM onwards</div>
+          <div class="where"><b>Abhimani Convention Hall</b><br>Basaveshwara Nagar, Bengaluru</div>
+          <a class="btn sm" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=Abhimani%20Convention%20Hall%2C%20Basaveshwar%20Nagar%2C%20Bengaluru%20560079">📍 Directions</a></div>
       </div>
+      <div class="acts"><button class="btn alt" id="again">↻ Watch again</button></div>
     </div>
   </div>
 
