@@ -42,6 +42,8 @@ body{background:var(--dusk);color:var(--ivory);font-family:var(--body);overflow:
 button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 
 /* svg text */
+@font-face{font-family:"KnSign";src:url(data:font/woff2;base64,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) format("woff2");font-weight:700}
+.t-kn{font-family:"KnSign","Noto Sans Kannada",sans-serif;font-weight:700}
 .t-film{font-family:var(--film)} .t-street{font-family:var(--street)} .t-news{font-family:var(--news);font-weight:600} .t-body{font-family:var(--body);font-weight:700}
 
 /* hold bar */
@@ -208,54 +210,83 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offse
       el("rect",{x:x-4,y:GY-104,width:98,height:10,fill:"#5d5a6b"},B);
     }}
   }
-  // 0 · LAKSHMI SILKS — the whole first building is one saree & lehenga showroom
-  el("rect",{x:-60,y:128,width:380,height:GY-128,fill:"#efb6c6"},B);
-  el("rect",{x:316,y:128,width:4,height:GY-128,fill:"#b3123a"},B); el("rect",{x:-60,y:128,width:380,height:5,fill:"#b3123a"},B);
-  // crest + brand on the parapet
-  el("path",{d:"M70 128 Q140 92 200 92 Q260 92 320 128Z",fill:"#efb6c6"},B);
-  el("path",{d:"M64 128 Q130 84 196 84 Q262 84 324 128",fill:"none",stroke:"#b3123a","stroke-width":3},B);
-  el("circle",{cx:196,cy:96,r:7,fill:"#b3123a"},B);
-  txt("LAKSHMI SILKS",{x:190,y:160,"text-anchor":"middle",class:"t-news","font-size":20,fill:"#b3123a","letter-spacing":1},B);
-  txt("SAREES · LEHENGAS · BRIDAL",{x:190,y:176,"text-anchor":"middle",class:"t-body","font-size":7.5,fill:"#7a1a35","letter-spacing":1.5},B);
-  // temple-border bands between floors
-  const band=(y)=>{ el("rect",{x:-60,y,width:380,height:9,fill:"#b3123a"},B);
-    let d=""; for(let x=-60;x<320;x+=10) d+=`M${x} ${y+9} l5 -6 l5 6 `; el("path",{d,fill:"none",stroke:"#fff","stroke-width":1.4},B); };
-  band(186); band(258); band(320);
-  // upper floors: sarees hanging in lit glass bays
-  const SC=[["#c0392b","#f2c14e"],["#2f8f5a","#e0b45a"],["#e58a3a","#7a1240"],["#8e44ad","#f0cf7a"],["#d6466a","#e0b45a"],["#1f6fa8","#f2c14e"],["#f4e3b0","#b3123a"],["#b3123a","#f2c14e"]];
-  const hang=(x,y,h,w,[c,b],k)=>{ el("line",{x1:x-2,y1:y,x2:x+w+2,y2:y,stroke:"#8a5a3a","stroke-width":2},B);
-    el("path",{d:`M${x} ${y} L${x+w} ${y} Q${x+w+3} ${y+h*.5} ${x+w-1} ${y+h} L${x+1} ${y+h} Q${x-3} ${y+h*.5} ${x} ${y}Z`,fill:c},B);
-    el("path",{d:`M${x+w*.35} ${y+2} Q${x+w*.3} ${y+h*.5} ${x+w*.38} ${y+h-1} M${x+w*.7} ${y+2} Q${x+w*.75} ${y+h*.5} ${x+w*.66} ${y+h-1}`,stroke:"rgba(0,0,0,.18)","stroke-width":1.2,fill:"none"},B);
-    el("rect",{x:x+1,y:y+h-6,width:w-2,height:4,fill:b},B); };
-  [[196,54],[268,44]].forEach(([y,h],f)=>{
-    for(let bay=0;bay<5;bay++){ const bx=-46+bay*72;
-      el("rect",{x:bx,y,width:64,height:h,rx:2,fill:"#fff4f6"},B);
-      for(let k=0;k<4;k++) hang(bx+4+k*15,y+5,h-10-(k%2)*5,12,SC[(bay*4+k+f*3)%SC.length],k);
-      el("rect",{x:bx,y,width:64,height:h,rx:2,fill:"none",stroke:"#b3123a","stroke-width":2},B); } });
-  // ground floor window
-  el("rect",{x:-44,y:332,width:348,height:GY-332,fill:"#b3123a"},B);
-  el("rect",{x:-38,y:336,width:336,height:GY-342,fill:"#fff4f6"},B);
-  el("rect",{x:-38,y:336,width:336,height:12,fill:"#c0396b",opacity:.5},B);
-  for(let x=-30;x<296;x+=12) el("circle",{cx:x,cy:351,r:2.2,fill:"#b3123a"},B);
-  // back shelf of folded sarees
-  const fold=["#c0392b","#2f8f5a","#e58a3a","#8e44ad","#d6466a","#1f6fa8","#f2c14e"];
-  for(let r=0;r<3;r++) for(let k=0;k<5;k++) el("rect",{x:-28+k*22,y:362+r*12,width:18,height:9,rx:1.5,fill:fold[(k+r*2)%7],stroke:"#e0b45a","stroke-width":.8},B);
-  el("rect",{x:-32,y:398,width:116,height:4,fill:"#8a5a3a"},B);
-  // mannequins: sarees (draped pallu) and lehengas
-  const form=(x)=>{ el("circle",{cx:x,cy:364,r:7,fill:"#e8d9c4",stroke:"#bfa98a","stroke-width":1},B);
-    el("rect",{x:x-1.5,y:GY-20,width:3,height:14,fill:"#6b4b3a"},B); el("ellipse",{cx:x,cy:GY-6,rx:12,ry:3,fill:"#6b4b3a"},B); };
-  const saree=(x,c,border)=>{ form(x);
-    el("path",{d:`M${x-10} 372 L${x+10} 372 L${x+12} 396 L${x+14} ${GY-22} L${x-14} ${GY-22} L${x-12} 396Z`,fill:c},B);
-    for(let k=0;k<4;k++) el("line",{x1:x-6+k*4,y1:400,x2:x-8+k*5,y2:GY-23,stroke:"rgba(0,0,0,.15)","stroke-width":1},B);   // pleats
-    el("path",{d:`M${x-14} ${GY-24} L${x+14} ${GY-24}`,stroke:border,"stroke-width":3},B);
-    el("path",{d:`M${x+9} 372 L${x-12} 398 L${x-15} 420 L${x-6} 418 L${x-2} 400 L${x+12} 380Z`,fill:c,stroke:border,"stroke-width":1.5},B); };   // pallu over the shoulder
-  const lehenga=(x,c,trim)=>{ form(x);
-    el("path",{d:`M${x-10} 372 L${x+10} 372 L${x+8} 396 L${x-8} 396Z`,fill:trim},B);
-    el("path",{d:`M${x-8} 396 L${x+8} 396 L${x+24} ${GY-22} L${x-24} ${GY-22}Z`,fill:c},B);
-    for(let k=0;k<3;k++) el("path",{d:`M${x-12-k*4} ${408+k*12} L${x+12+k*4} ${408+k*12}`,stroke:trim,"stroke-width":2},B);
-    el("path",{d:`M${x-10} 374 Q${x-22} 398 ${x-20} 424`,stroke:"#f4e3b0","stroke-width":5,fill:"none",opacity:.8},B); };
-  saree(110,"#b3123a","#e0b45a"); lehenga(162,"#2f8f5a","#f0cf7a"); saree(214,"#e58a3a","#7a1240"); lehenga(270,"#8e2a7a","#e0b45a");
-  [136,240].forEach(x=>el("line",{x1:x,y1:336,x2:x,y2:GY-6,stroke:"#b3123a","stroke-width":3},B));
+  // 0 · two-floor building: Prakruti Hotel (South Indian eatery) below, a small BMMA office above
+  (function(){
+    const X0=-60, X1=320, W=X1-X0, TOP=176, MID=296;   // MID: floor line between office and hotel
+    // terrace: parapet, railing, black water tank
+    el("rect",{x:X0+150,y:TOP-46,width:44,height:40,rx:5,fill:"#1f1d26"},B);
+    for(let k=0;k<4;k++) el("line",{x1:X0+152,x2:X0+192,y1:TOP-38+k*9,y2:TOP-38+k*9,stroke:"#34303f","stroke-width":1.5},B);
+    el("rect",{x:X0+146,y:TOP-50,width:52,height:6,rx:3,fill:"#2a2733"},B);
+    el("rect",{x:X0+150,y:TOP-6,width:4,height:6,fill:"#555"},B); el("rect",{x:X0+190,y:TOP-6,width:4,height:6,fill:"#555"},B);
+    // walls
+    el("rect",{x:X0,y:TOP,width:W,height:GY-TOP,fill:"#cfe6d6"},B);
+    el("rect",{x:X0,y:TOP,width:W,height:9,fill:"#9cc7ad"},B);
+    el("rect",{x:X0,y:TOP-14,width:W,height:14,fill:"#e4f1e8"},B);                       // parapet
+    for(let x=X0+8;x<X1;x+=22) el("rect",{x,y:TOP-12,width:10,height:10,rx:2,fill:"#9cc7ad"},B);
+    // ---- first floor: BMMA office ----
+    el("rect",{x:X0,y:MID-6,width:W,height:8,fill:"#2f6b3f"},B);                         // floor band
+    const winY=TOP+26, winH=56;
+    [[X0+22,96],[X0+138,96],[X0+258,96]].forEach(([x,w],k)=>{
+      el("rect",{x:x-4,y:winY-4,width:w+8,height:winH+8,rx:3,fill:"#f4f7f5"},B);         // frame
+      el("rect",{x,y:winY,width:w,height:winH,fill:k===1?"#ffe7b0":"#bcd2dc"},B);       // glass (one lit)
+      for(let y=winY+5;y<winY+winH*.62;y+=5) el("line",{x1:x+2,x2:x+w-2,y1:y,y2:y,stroke:k===1?"#e8c98a":"#9fb8c4","stroke-width":1.4},B);  // blinds
+      el("line",{x1:x+w/2,x2:x+w/2,y1:winY,y2:winY+winH,stroke:"#8f897c","stroke-width":2},B);
+      el("rect",{x:x-6,y:winY+winH+4,width:w+12,height:5,fill:"#9cc7ad"},B);            // sill
+    });
+    el("path",{d:`M${X0+182} ${winY+winH+4} q-6 -12 -2 -20 q6 6 2 20 M${X0+186} ${winY+winH+4} q4 -14 12 -16 q-2 10 -12 16`,fill:"#3f8a52"},B);  // sill plant
+    el("rect",{x:X0+176,y:winY+winH-2,width:14,height:7,rx:1,fill:"#b5532f"},B);
+    // AC unit
+    el("rect",{x:X0+112,y:winY+winH-26,width:22,height:18,rx:2,fill:"#e9eaee",stroke:"#9aa0aa","stroke-width":1},B);
+    el("circle",{cx:X0+123,cy:winY+winH-17,r:6,fill:"none",stroke:"#9aa0aa","stroke-width":1.2},B);
+    // small office board
+    el("rect",{x:X0+222,y:winY+winH+14,width:46,height:15,rx:2,fill:"#fff",stroke:"#1f3f6b","stroke-width":1.2},B);
+    txt("BMMA",{x:X0+245,y:winY+winH+25,"text-anchor":"middle",class:"t-body","font-size":9,fill:"#1f3f6b","letter-spacing":1.5},B);
+    // ---- ground floor: Prakruti Hotel ----
+    // sloping Mangalore-tile awning
+    const AT=MID+4, AB=MID+36;
+    el("path",{d:`M${X0-4} ${AB} L${X0+10} ${AT} L${X1-10} ${AT} L${X1+4} ${AB}Z`,fill:"#b5532f"},B);
+    for(let r=0;r<3;r++){ const y=AT+6+r*10;
+      let d=""; for(let x=X0+2;x<X1;x+=12) d+=`M${x} ${y} q6 6 12 0 `; el("path",{d,fill:"none",stroke:"#8e3a20","stroke-width":1.6},B); }
+    el("rect",{x:X0-4,y:AB,width:W+8,height:4,fill:"#7a2e18"},B);
+    // name board hung from the awning
+    el("rect",{x:X0+125,y:AB+6,width:210,height:34,rx:4,fill:"#2f6b3f",stroke:"#f2c14e","stroke-width":2},B);
+    txt("PRAKRUTI HOTEL",{x:X0+230,y:AB+25,"text-anchor":"middle",class:"t-news","font-size":17,fill:"#f2c14e","letter-spacing":1.5},B);
+    txt("NATI STYLE · NON-VEG",{x:X0+230,y:AB+36,"text-anchor":"middle",class:"t-body","font-size":6.5,fill:"#fff6d8","letter-spacing":1.5},B);
+    // mango-leaf toran along the awning edge
+    for(let x=X0+4;x<X1;x+=11) el("path",{d:`M${x} ${AB+4} q3 8 0 14 q-3 -6 0 -14Z`,fill:(x/11|0)%2?"#3f8a52":"#2f6b3f"},B);
+    // open front: warm interior
+    const IT=AB+42;
+    el("rect",{x:X0+8,y:IT,width:W-16,height:GY-IT,fill:"#4a2f22"},B);
+    el("rect",{x:X0+8,y:IT,width:W-16,height:GY-IT,fill:"#ffc070",opacity:.22},B);
+    // painted menu on the back wall
+    el("rect",{x:X0+254,y:IT+6,width:54,height:58,rx:3,fill:"#f6e7c4",stroke:"#2f6b3f","stroke-width":1.5},B);
+    [["NATI SPECIAL",IT+16,5.6,"#b5532f"],["Ragi Mudde",IT+28,6.6,"#2f6b3f"],["Koli Saaru",IT+39,6.6,"#2f6b3f"],["Mutton Chops",IT+50,6.6,"#2f6b3f"],["Biryani",IT+60,6.6,"#2f6b3f"]].forEach(([t,y,f,c])=>
+      txt(t,{x:X0+281,y,"text-anchor":"middle",class:"t-body","font-size":f,fill:c},B));
+    // steel counter with big vessels and an idli steamer
+    el("rect",{x:X0+18,y:GY-46,width:120,height:46,fill:"#9aa0aa"},B);
+    el("rect",{x:X0+16,y:GY-50,width:124,height:6,rx:2,fill:"#c9cdd3"},B);
+    [[X0+38,12,"#b8862e"],[X0+72,14,"#c9cdd3"],[X0+108,12,"#c9cdd3"]].forEach(([x,r,c])=>{   // brass & steel pots
+      el("path",{d:`M${x-r} ${GY-50} Q${x-r} ${GY-50-r*1.5} ${x} ${GY-50-r*1.6} Q${x+r} ${GY-50-r*1.5} ${x+r} ${GY-50}Z`,fill:c,stroke:"#6f6b7c","stroke-width":1},B);
+      el("ellipse",{cx:x,cy:GY-50-r*1.55,rx:r*.6,ry:2.4,fill:"#6f6b7c"},B); });
+    // dining table with banana-leaf plates and steel tumblers
+    el("rect",{x:X0+174,y:GY-36,width:74,height:6,rx:2,fill:"#8a5a34"},B);
+    [X0+180,X0+238].forEach(x=>el("rect",{x,y:GY-30,width:5,height:30,fill:"#5a3a22"},B));
+    [[X0+192],[X0+226]].forEach(([x])=>{ el("ellipse",{cx:x,cy:GY-38,rx:14,ry:3.4,fill:"#3f9a4a"},B);
+      el("ellipse",{cx:x+4,cy:GY-39,rx:6,ry:2.2,fill:"#b5381f"},B);                       // nati koli saaru
+      el("circle",{cx:x-4,cy:GY-41,r:3.8,fill:"#7a5a46",stroke:"#5a3e2e","stroke-width":.6},B);   // ragi mudde
+      el("path",{d:`M${x+2} ${GY-40} q2 -3 4 0`,stroke:"#f2e0c8","stroke-width":1.2,fill:"none"},B);   // chicken piece
+      el("path",{d:`M${x+12} ${GY-36} L${x+13} ${GY-46} L${x+18} ${GY-46} L${x+19} ${GY-36}Z`,fill:"#d7dce2",stroke:"#8a8f96","stroke-width":.8},B); });
+    // carved wooden pillars
+    [X0+8,X0+145,X1-14].forEach(x=>{ el("rect",{x,y:IT-2,width:10,height:GY-IT+2,fill:"#6b4430"},B);
+      el("rect",{x:x-3,y:IT-2,width:16,height:6,fill:"#8a5a34"},B); el("rect",{x:x-3,y:GY-6,width:16,height:6,fill:"#8a5a34"},B);
+      for(let y=IT+14;y<GY-12;y+=16) el("rect",{x:x+2,y,width:6,height:3,rx:1.5,fill:"#8a5a34"},B); });
+    // banana bunch hanging by the entrance pillar, brass lamp, kolam on the step
+    el("line",{x1:X0+152,y1:IT+2,x2:X0+152,y2:IT+18,stroke:"#5a3a22","stroke-width":1.5},B);
+    for(let k=0;k<4;k++) for(let m=0;m<3;m++) el("path",{d:`M${X0+146+m*5} ${IT+18+k*7} q2 6 6 6`,stroke:"#e0b832","stroke-width":3.2,fill:"none","stroke-linecap":"round"},B);
+    el("path",{d:`M${X0+160} ${GY} L${X0+163} ${GY-26} L${X0+167} ${GY-26} L${X0+170} ${GY}Z`,fill:"#b8862e"},B);
+    el("ellipse",{cx:X0+165,cy:GY-28,rx:7,ry:2.5,fill:"#b8862e"},B); el("path",{d:`M${X0+165} ${GY-30} q-3 -5 0 -9 q3 4 0 9Z`,fill:"#ffcf55"},B);
+    for(let k=0;k<7;k++) el("circle",{cx:X0+120+k*14,cy:GY+5,r:1.4,fill:"#fff",opacity:.85},B);   // kolam dots on the pavement edge
+  })();
   // 1 · poster wall
   el("rect",{x:300,y:14,width:380,height:GY-14,fill:"#e4cfa8"},B);
   for(let k=0;k<9;k++) el("rect",{x:330+k*37,y:160+((k*41)%200),width:22,height:16,fill:"rgba(120,80,40,.08)"},B);
@@ -292,30 +323,74 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offse
   el("rect",{x:640,y:404,width:3,height:GY-410,fill:"#6b4b3a"},B);
   el("ellipse",{cx:641,cy:398,rx:11,ry:8,fill:"#e8a23a"},B); el("path",{d:"M632 398 Q641 388 650 398",stroke:"#c0392b","stroke-width":2,fill:"none"},B);
   [480,600].forEach(x=>el("line",{x1:x+18,y1:340,x2:x+18,y2:GY-6,stroke:"#5a2a2e","stroke-width":3},B));   // window mullions
-  // 1c · narrow bangle shop between the poster wall and the restaurant
-  el("rect",{x:660,y:206,width:110,height:GY-206,fill:"#3e8c94"},B);
-  el("rect",{x:660,y:206,width:110,height:7,fill:"#f2c14e"},B);
-  for(let x=664;x<768;x+=10) el("circle",{cx:x+3,cy:216,r:2.4,fill:"#f2c14e"},B);   // gold bead trim
-  [[674,232],[722,232],[674,288],[722,288]].forEach(([x,y],k)=>{
-    el("path",{d:`M${x} ${y+38} L${x} ${y+12} Q${x} ${y} ${x+17} ${y} Q${x+34} ${y} ${x+34} ${y+12} L${x+34} ${y+38}Z`,fill:k%3?"#ffe2a6":"#24485a",stroke:"#f2c14e","stroke-width":1.5},B);
-    el("rect",{x:x-3,y:y+38,width:40,height:4,fill:"#f2c14e"},B); });
-  el("rect",{x:672,y:338,width:86,height:16,rx:3,fill:"#fff6e0",stroke:"#2b6670","stroke-width":1.5},B);
-  txt("CHOODI",{x:715,y:350,"text-anchor":"middle",class:"t-news","font-size":10.5,fill:"#2b6670","letter-spacing":2},B);
-  el("rect",{x:668,y:360,width:94,height:GY-360,fill:"#2b2230"},B);
-  el("rect",{x:668,y:360,width:94,height:GY-360,fill:"#ffd08a",opacity:.18},B);
-  // stacks of glass bangles on display rods
-  const BC=["#e8505b","#f2c14e","#2f8f5a","#3d7bd9","#c58bff","#ff9a4a","#d6466a","#7fe0ff"];
-  [682,700,718,736,752].forEach((x,k)=>{ el("line",{x1:x,y1:366,x2:x,y2:GY-14,stroke:"#8a6a3a","stroke-width":1.5},B);
-    for(let m=0;m<10;m++) el("ellipse",{cx:x,cy:372+m*6.2,rx:7,ry:2.2,fill:"none",stroke:BC[(k*3+m)%BC.length],"stroke-width":2.2},B); });
-  el("rect",{x:668,y:GY-14,width:94,height:14,fill:"#6b4430"},B);   // counter
+  // 1c · Kundapura Tea: a cosy coastal tea stall (teal front, striped awning, copper urn)
+  (function(){
+    const X0=660, W=110, TOP=206;
+    el("rect",{x:X0,y:TOP,width:W,height:GY-TOP,fill:"#23706a"},B);
+    el("rect",{x:X0,y:TOP,width:5,height:GY-TOP,fill:"#1a5752"},B); el("rect",{x:X0+W-5,y:TOP,width:5,height:GY-TOP,fill:"#1a5752"},B);   // pilasters
+    el("rect",{x:X0-2,y:TOP-8,width:W+4,height:10,rx:2,fill:"#f4e3c0"},B);                    // cornice
+    for(let x=X0+4;x<X0+W-4;x+=9) el("circle",{cx:x+4,cy:TOP+6,r:2,fill:"#f2c14e"},B);
+    // upper floor: two windows with open wooden shutters and flower pots
+    [[X0+14],[X0+62]].forEach(([x],k)=>{
+      el("rect",{x,y:TOP+22,width:34,height:44,rx:3,fill:k?"#3a2420":"#ffdc8f",stroke:"#f4e3c0","stroke-width":2},B);
+      el("line",{x1:x+17,y1:TOP+22,x2:x+17,y2:TOP+66,stroke:"#f4e3c0","stroke-width":1.5},B);
+      el("rect",{x:x-9,y:TOP+22,width:8,height:44,fill:"#c97a2e"},B); el("rect",{x:x+35,y:TOP+22,width:8,height:44,fill:"#c97a2e"},B);
+      for(let y=TOP+26;y<TOP+64;y+=5){ el("line",{x1:x-8,x2:x-2,y1:y,y2:y,stroke:"#9a5a20","stroke-width":1},B); el("line",{x1:x+36,x2:x+42,y1:y,y2:y,stroke:"#9a5a20","stroke-width":1},B); }
+      el("rect",{x:x-2,y:TOP+67,width:38,height:6,rx:2,fill:"#b5532f"},B);
+      [[4,"#e8505b"],[12,"#f2c14e"],[20,"#e8505b"],[28,"#ff9a4a"]].forEach(([dx,c])=>{ el("circle",{cx:x+dx+1,cy:TOP+65,r:3.4,fill:"#3f8a52"},B); el("circle",{cx:x+dx+1,cy:TOP+63,r:2.2,fill:c},B); });
+    });
+    // dark wooden name board with a gold tea-cup icon
+    const BY=TOP+86;
+    el("rect",{x:X0+3,y:BY,width:W-6,height:24,rx:4,fill:"#3b2216",stroke:"#d4a64a","stroke-width":1.6},B);
+    el("path",{d:`M${X0+11} ${BY+9} h11 v5 q0 5 -5.5 5 q-5.5 0 -5.5 -5Z M${X0+22} ${BY+11} q4 0 4 2.5 q0 2.5 -4 2.5`,fill:"#f2c14e",stroke:"#f2c14e","stroke-width":.8},B);
+    el("path",{d:`M${X0+14} ${BY+7} q-1.5 -2.5 0 -4.5 M${X0+18} ${BY+7} q1.5 -2.5 0 -4.5`,stroke:"#f2c14e","stroke-width":1,fill:"none"},B);
+    txt("KUNDAPURA",{x:X0+66,y:BY+11,"text-anchor":"middle",class:"t-news","font-size":9.5,fill:"#f2c14e","letter-spacing":1.2},B);
+    txt("TEA",{x:X0+66,y:BY+20.5,"text-anchor":"middle",class:"t-body","font-size":7,fill:"#fbe7b5","letter-spacing":4},B);
+    // striped saffron & cream awning with scalloped edge
+    const AY=BY+30;
+    el("path",{d:`M${X0-6} ${AY+14} L${X0+2} ${AY} L${X0+W-2} ${AY} L${X0+W+6} ${AY+14}Z`,fill:"#f29a2e"},B);
+    for(let k=0;k<8;k++){ const x0=X0-6+k*15.25; el("path",{d:`M${x0+3+k*.0} ${AY+14} L${x0+7} ${AY} L${x0+12} ${AY} L${x0+10.5} ${AY+14}Z`,fill:"#fff1d6"},B); }
+    for(let k=0;k<9;k++){ const x=X0-6+k*13.5; el("path",{d:`M${x} ${AY+14} q6.75 8 13.5 0Z`,fill:k%2?"#fff1d6":"#f29a2e"},B); }
+    // glowing stall
+    const OY=AY+16;
+    el("rect",{x:X0+7,y:OY,width:W-14,height:GY-OY,fill:"#3a2218"},B);
+    el("rect",{x:X0+7,y:OY,width:W-14,height:GY-OY,fill:"#ffb04a",opacity:.28},B);
+    el("ellipse",{cx:X0+W/2,cy:OY+34,rx:44,ry:30,fill:"#ffd27a",opacity:.18},B);
+    // string bulbs
+    el("path",{d:`M${X0+8} ${OY+4} Q${X0+W/2} ${OY+12} ${X0+W-8} ${OY+4}`,stroke:"#2a1a12","stroke-width":1,fill:"none"},B);
+    [0.12,.3,.5,.7,.88].forEach(t=>{ const x=X0+8+(W-16)*t, y=OY+4+8*Math.sin(Math.PI*t);
+      el("circle",{cx:x,cy:y+3,r:5,fill:"#ffe08a",opacity:.25},B); el("circle",{cx:x,cy:y+3,r:2.2,fill:"#fff2b8"},B); });
+    // back shelf with colourful tins
+    el("rect",{x:X0+10,y:OY+30,width:W-20,height:2.5,fill:"#8a5a34"},B);
+    [["#d8243f",14],["#2f8f5a",24],["#f2c14e",34],["#3d7bd9",72],["#d8243f",82],["#f2c14e",92]].forEach(([c,dx])=>el("rect",{x:X0+dx,y:OY+20,width:7,height:10,rx:1.5,fill:c},B));
+    // hero: copper tea urn with brass tap and steam
+    const UX=X0+W/2, UB=GY-34;
+    el("ellipse",{cx:UX,cy:UB+1,rx:14,ry:3,fill:"#1a100c",opacity:.5},B);
+    el("path",{d:`M${UX-12} ${UB} Q${UX-15} ${UB-22} ${UX-9} ${UB-30} L${UX+9} ${UB-30} Q${UX+15} ${UB-22} ${UX+12} ${UB}Z`,fill:"#c8743a",stroke:"#8a4a20","stroke-width":1.2},B);
+    el("path",{d:`M${UX-7} ${UB-26} Q${UX-10} ${UB-14} ${UX-7} ${UB-4}`,stroke:"#f4b27a","stroke-width":2.2,fill:"none",opacity:.8},B);   // shine
+    el("rect",{x:UX-10,y:UB-33,width:20,height:4,rx:2,fill:"#d4a64a"},B);
+    el("path",{d:`M${UX-5} ${UB-33} Q${UX} ${UB-40} ${UX+5} ${UB-33}Z`,fill:"#d4a64a"},B);
+    el("circle",{cx:UX,cy:UB-41,r:2,fill:"#d4a64a"},B);
+    el("path",{d:`M${UX+11} ${UB-9} h6 v4`,stroke:"#d4a64a","stroke-width":2.4,fill:"none","stroke-linecap":"round"},B);   // tap
+    el("path",{d:`M${UX-4} ${UB-44} q-4 -6 0 -11 q4 -5 0 -10 M${UX+4} ${UB-44} q4 -6 0 -11`,stroke:"#fff",fill:"none","stroke-width":1.6,opacity:.85,"stroke-linecap":"round"},B);
+    // glasses of chai on the counter
+    el("rect",{x:X0+7,y:GY-32,width:W-14,height:32,fill:"#6b3d22"},B);
+    el("rect",{x:X0+5,y:GY-35,width:W-10,height:5,rx:2,fill:"#d9a86a"},B);
+    for(let y=GY-24;y<GY-2;y+=8) el("line",{x1:X0+9,x2:X0+W-9,y1:y,y2:y,stroke:"#5a3018","stroke-width":1},B);   // planks
+    [[X0+16],[X0+26],[X0+84],[X0+94]].forEach(([x])=>{ el("path",{d:`M${x-3.5} ${GY-35} L${x-3} ${GY-45} L${x+3} ${GY-45} L${x+3.5} ${GY-35}Z`,fill:"#eef4f6",opacity:.8},B);
+      el("path",{d:`M${x-3.3} ${GY-35} L${x-3} ${GY-41} L${x+3} ${GY-41} L${x+3.3} ${GY-35}Z`,fill:"#b8682a"},B); });
+    // banana bunch hanging by the side
+    el("line",{x1:X0+12,y1:OY+2,x2:X0+12,y2:OY+12,stroke:"#5a3a22","stroke-width":1.2},B);
+    for(let k=0;k<3;k++) for(let m=0;m<2;m++) el("path",{d:`M${X0+9+m*4} ${OY+12+k*5} q1.5 4 4.5 4.5`,stroke:"#e8c33a","stroke-width":2.6,fill:"none","stroke-linecap":"round"},B);
+  })();
   // 2b · fine-dining restaurant (elegant, small board)
   el("rect",{x:770,y:110,width:320,height:GY-110,fill:"#4e3040"},B);
   el("rect",{x:770,y:110,width:320,height:10,fill:"#c9a35a"},B);
   el("rect",{x:770,y:120,width:320,height:3,fill:"rgba(0,0,0,.2)"},B);
   // name on the top floor so it stays visible above the lorry
-  el("rect",{x:878,y:128,width:104,height:22,rx:11,fill:"#33202a",stroke:"#c9a35a","stroke-width":1.5},B);
-  txt("SWAGAT",{x:930,y:144,"text-anchor":"middle",class:"t-news","font-size":15,fill:"#e8c477","letter-spacing":3},B);
-  txt("FINE DINING",{x:930,y:160,"text-anchor":"middle",class:"t-body","font-size":6.5,fill:"#e8c477","letter-spacing":2},B);
+  el("rect",{x:852,y:128,width:156,height:22,rx:11,fill:"#33202a",stroke:"#c9a35a","stroke-width":1.5},B);
+  txt("PANCHAMRUTA",{x:930,y:144,"text-anchor":"middle",class:"t-news","font-size":14,fill:"#e8c477","letter-spacing":2},B);
+  txt("CAFE",{x:930,y:160,"text-anchor":"middle",class:"t-body","font-size":6.5,fill:"#e8c477","letter-spacing":2},B);
   // added top floor: smaller arched windows
   [800,862,986,1048].forEach(x=>{
     el("path",{d:`M${x-6} 200 L${x-6} 176 Q${x-6} 162 ${x+8} 162 Q${x+22} 162 ${x+22} 176 L${x+22} 200Z`,fill:"#ffd99a",stroke:"#c9a35a","stroke-width":2},B);
@@ -391,8 +466,9 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offse
   el("rect",{x:1500,y:98,width:360,height:GY-98,fill:"#7b5240"},B);
   el("rect",{x:1500,y:98,width:360,height:8,fill:"rgba(0,0,0,.15)"},B);
   // small name board
-  el("rect",{x:1618,y:104,width:124,height:26,rx:4,fill:"#f4ead8",stroke:"#2f6b4f","stroke-width":2},B);
-  txt("KAAPI KATTE",{x:1680,y:123,"text-anchor":"middle",class:"t-street","font-size":15,fill:"#2f6b4f","letter-spacing":1},B);
+  const cafeBoard=el("g",{},B);   // re-attached after the overhead wires so they don't cross the name
+  el("rect",{x:1630,y:104,width:100,height:26,rx:4,fill:"#f4ead8",stroke:"#2f6b4f","stroke-width":2},cafeBoard);
+  txt("ಕಹಳೆ",{x:1680,y:125,"text-anchor":"middle",class:"t-kn","font-size":21,fill:"#2f6b4f","letter-spacing":1},cafeBoard);
   // shop opening with warm interior
   el("rect",{x:1516,y:150,width:328,height:GY-150,fill:"#3a2824"},B);
   el("rect",{x:1516,y:150,width:328,height:GY-150,fill:"#ffb862",opacity:.12},B);
@@ -449,14 +525,14 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offse
     return {g,dot,cx,cy};
   });
   el("rect",{x:TVX+TVW/2-22,y:TVY+TVH+8,width:44,height:5,rx:2,fill:"#111"},BB);
-  // 4b · mithai (sweet) shop next to the coffee shop
+  // 4b · Bansuri Sweets, next to the coffee shop
   el("rect",{x:1860,y:186,width:150,height:GY-186,fill:"#f2b84b"},B);
   el("rect",{x:1860,y:186,width:150,height:7,fill:"#8a1c32"},B);
   for(let x=1866;x<2006;x+=12) el("path",{d:`M${x} 193 l6 7 l6 -7`,fill:"#8a1c32"},B);   // scalloped trim
   [[1876,214],[1920,214],[1964,214],[1876,268],[1920,268],[1964,268]].forEach(([x,y],k)=>{
     el("rect",{x,y,width:30,height:38,rx:3,fill:k%3===1?"#3a2440":"#ffe2a6"},B); el("rect",{x:x-3,y:y+38,width:36,height:4,fill:"#8a1c32"},B); });
-  el("rect",{x:1888,y:322,width:94,height:18,rx:3,fill:"#fff6e0",stroke:"#8a1c32","stroke-width":1.5},B);
-  txt("MITHAI GHAR",{x:1935,y:335,"text-anchor":"middle",class:"t-news","font-size":10.5,fill:"#8a1c32","letter-spacing":1.5},B);
+  el("rect",{x:1872,y:190,width:126,height:20,rx:3,fill:"#fff6e0",stroke:"#8a1c32","stroke-width":1.5},B);
+  txt("BANSURI SWEETS",{x:1935,y:204,"text-anchor":"middle",class:"t-news","font-size":11,fill:"#8a1c32","letter-spacing":1.5},B);
   el("rect",{x:1868,y:346,width:134,height:GY-346,fill:"#4a2228"},B);
   el("rect",{x:1868,y:346,width:134,height:GY-346,fill:"#ffd08a",opacity:.2},B);
   for(let r=0;r<2;r++) for(let k=0;k<6;k++) el("rect",{x:1874+k*21,y:352+r*14,width:17,height:10,rx:1.5,fill:(k+r)%2?"#c0392b":"#e0b45a"},B);   // sweet boxes
@@ -488,6 +564,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offse
     [104,112].forEach((y,j)=>el("path",{d:`M${a} ${y} Q${(a+b)/2} ${y+38+j*6} ${b} ${y}`,stroke:"#2a2235","stroke-width":1.2,fill:"none"},B));}
   el("path",{d:`M1860 104 Q2000 150 2200 214`,stroke:"#2a2235","stroke-width":1.2,fill:"none"},B);
 
+  B.appendChild(cafeBoard);
   // sidewalk + road
   el("rect",{x:-100,y:GY,width:WORLD+300,height:24,fill:"#a8978b"},world);
   for(let x=-100;x<WORLD+200;x+=46) el("line",{x1:x,x2:x,y1:GY,y2:GY+24,stroke:"#8f7f74","stroke-width":1},world);
